@@ -14,7 +14,42 @@ paths:
     get:
       security:
       - ApiKeyAuth: []
-      description: This endpoint retrieves information about the organization.
+      description: |
+        The `Get Organization` endpoint allows you to access detailed information about the organization. To successfully use this endpoint, follow the instructions below for the HTTP request, headers, and response handling.
+        
+        ## HTTP Request
+        Use the following HTTP request details to retrieve information about the organization:
+        - **Method:** `GET`
+        - **URL:** `https://mapi.boomfi.xyz/v1/orgs`
+        
+        ## Headers        
+        Include the following headers in your request to ensure proper authentication and response formatting:
+        - `accept: application/json`
+        - `x-api-key: <YOUR_API_KEY>`
+        
+        ## Example Request
+        Here's an example of how to make a request to this endpoint:
+
+        ```shell
+        curl --request GET \
+             --url https://mapi.boomfi.xyz/v1/orgs \
+             --header 'accept: application/json'
+        ```
+
+        ## Response Codes
+        The following are the expected response codes for this endpoint:
+        - **200 OK:** The request was successful, and the organization information was returned.
+        - **400 Bad Request:** The request was invalid, likely due to missing or incorrect parameters.
+        - **401 Unauthorized:** Authentication failed, usually due to an invalid or missing API key.
+        - **500 Internal Server Error:** An error occurred on the server, indicating a problem with processing the request.
+        
+        ## Key Points
+        Here are some key points to keep in mind when using this endpoint:
+        - Use the provided `x-api-key` for authentication in the request headers.
+        - Handle different HTTP response codes to manage success and error scenarios appropriately.
+        - Ensure secure handling of the API key to prevent unauthorized access.
+
+      
       consumes:
       - application/json
       produces:
