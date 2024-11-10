@@ -1,59 +1,61 @@
 {
-  "websiteName": "WriteDocs Documentation",
-  "description": "Explore our documentation to learn how to create beautiful, scalable developer portals with WriteDocs.",
+  "websiteName": "BoomFi Documentation",
+  "description": "Explore our guides and examples to start accepting crypto payments, exchanging cryptocurrencies, and integrating our card ramp solution.",
   "images": {
-    "logo": "media/logo.png",
+    "logo": "media/logo_boomfi_docs_black.svg",
     "favicon": "media/favicon.ico",
-    "darkLogo": ""
+    "darkLogo": "media/logo_boomfi_docs_white.svg"
   },
   "languages": [
     "en"
   ],
   "styles": {
-    "mainColor": "#0029F5",
-    "darkModeMainColor": "#F0F0FF",
-    "navbarColor": "#000621",
-    "navbarDarkModeColor": "#000621",
+    "mainColor": "#5F00E7",
+    "darkModeMainColor": "#FFFFFF",
+    "navbarColor": "#FFFFFF",
+    "navbarDarkModeColor": "#0F0F0F",
+    "backgroundDarkModeColor": "0F0F0F",
+    "logoSize": "large",
+    "navbarMode": "tabbed",
     "pagination": false
   },
   "apiFiles": [
-    "example.yml"
+    "merchant.json"
   ],
   "homepage": "/introduction",
   "changelog": false,
   "navbar": [
     {
-      "label": "Guides",
-      "sidebarRef": "guides"
+      "label": "Getting Started",
+      "sidebarRef": "getting-started"
     },
     {
-      "label": "API Reference",
-      "sidebarRef": "apiReference"
+      "label": "Payment Gateway",
+      "sidebarRef": "payment-gateway"
+    },
+    {
+      "label": "Card On-Ramp",
+      "sidebarRef": "card-on-ramp"
     }
   ],
-  "externalLinks": [],
+  "externalLinks": [
+    {
+      "name": "Get Started",
+      "link": "https://app.boomfi.xyz/signup"
+    }
+  ],
   "sidebars": [
     {
-      "sidebarRef": "guides",
+      "sidebarRef": "getting-started",
       "categories": [
         {
-          "categoryName": "Getting Started",
+          "categoryName": "Overview",
           "pages": [
-            "getting-started/introduction",
-            "getting-started/local-development"
-          ]
-        },
-        {
-          "categoryName": "Basics",
-          "pages": [
-            "basics/global-settings",
-            "basics/markdown-basics",
+            "getting-started/how-boomfi-works",
             {
-              "groupName": "Page Templates",
+              "groupName": "General Information",
               "subpages": [
-                "basics/page-templates/api-introduction",
-                "basics/page-templates/environments",
-                "basics/page-templates/authentication"
+                "getting-started/networks-and-currencies"
               ]
             }
           ]
@@ -61,13 +63,41 @@
       ]
     },
     {
-      "sidebarRef": "apiReference",
+      "sidebarRef": "payment-gateway",
       "categories": [
         {
-          "categoryName": "Example",
+          "categoryName": "Overview",
           "pages": [
-            "reference/example/get-items",
-            "reference/example/create-item"
+            "payment-gateway/boomfi-payment-gateway"
+          ]
+        },
+        {
+          "categoryName": "Merchants API",
+          "pages": [
+            {
+              "groupName": "Organization",
+              "subpages": [
+                "reference/merchant/get-organization",
+                "reference/merchant/update-organization"
+              ]
+            },
+            {
+              "groupName": "Accounts",
+              "subpages": [
+                "reference/merchant/list-accounts"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sidebarRef": "card-on-ramp",
+      "categories": [
+        {
+          "categoryName": "Overview",
+          "pages": [
+            "card-on-ramp/boomfi-card-on-ramp"
           ]
         }
       ]

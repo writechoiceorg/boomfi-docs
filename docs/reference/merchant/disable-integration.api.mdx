@@ -1,0 +1,65 @@
+---
+id: disable-integration
+title: "Disable an Integration"
+description: "The **Disable an Integration** endpoint allows you to deactivate a specific integration within your organization identified by its unique `name`. Disabling an integration stops its operation while retaining its configuration, allowing you to re-enable it later if needed."
+sidebar_label: "Disable an Integration"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV99v20YM/lcIPm3BxU6G5kVPc1EPMLJhXdICG1IDPUu0da10p9xRblxD//vAO9lxajVuH/YwoC+2JZLHjz++I73FQHnrDW8wu9vipDHXtJm0XGJ2N+/mCgsKuTcNG2cxwzclwdnZKxP0oiLQFmaWaeW1iM/OgGzROGMZdFW5TwE2rgV2UJDO2aw1E2gIDeVmaXIwj6bwyXBprOh7cH6lrfmcBKYgy2ZpqIDFBgwHaK25bwneW13T+xEkLMauBM3hkYFdE6KFa2jnpjQVgSfWxoqJSHNnl2bVJg2VkIusx+7pnGyM1jBUmsmDWYIlKqgYvbOokPUqYHaHB6kIOFe4dzsrMMMi5ez8ACIqbLTXNTH5ENN/nGyJEtwSuKQn0bGDBUF/aDFChaKJWfpSaOSARnOJCj3dt8ZTgRn7lhSGvKRaY7ZF3jRiE9gbu8JO6u0pNM4GCiL/5eJCvp7C+vMaO4UvhkQvdQE3dN9SYFSYO8tkWdR001Qmj9DHH4Lobo9huMUHysWw8ZI7NgkEee/8abXcFXSMSHIYDwCRS+lbb1MzSUoD+TX50Ts7fdB1U1EGEpfauYoZJ48KKckxe3Fx0amEKRy7m0BlAkvBCmmyioreewIdRo9na+/1RirFVIfT4RWu1sYOB5hkoENwudFMReRTDDB6P4zP+UK6TX1R+4MIsVfppBl0X6xjp0kGS+eHHc1saJdLkxuy/FerLcsd85zbQYOuU8iGq101vNXV6NbYVUXT2BeiUFMIejVQ/Qnsn9cEvRrQQ1P1F8BJ5HD/vdAfLQaxR9S37Nucn1G46VmIXSdKV0Nkm/UWcBubGFI+/qe0uzpBu6sftPtW2qWuONGvvdIpeklZ/hOG9a2bGiEpfBPipxanGLaD/zzJklaX4uTSxXFNFTHFCS27EI7Xl+OD+RvGWxm0HSpMgNL8bn2FGZbMTcjG41o3ZrRwrl6a0cPmM8p43W1bt8LC1GKHO9e+HXV8+TjW/z6fvJ6dX0//2c32knRBKQPGLt1ws7x0rv7NwB/k81JbDjB5PYPGu7UpKMguRpE0u7UtxLaq99rsoNZWCsolGQ86z11rOShgr22Qpc7ZoEDbAmrnKdKsT/WQ6/5y0nm8nPrIBNJt2zTOC/uo1kZyGNKbXw/Tp1ASnaK7HF3Ii8YFrrU9OG54N8UvFtnt4y35Y6cd2mlTFzI98DhSWZIdu3vbM+IO15exFw+WXoVZrMJcYekCi9J2u9CB3vqq6+T1fUte/mnMFa61N4IhLb79IovZUleBnqnWTzf9NvszfN9+PBjSjm1WqLbWVStPqPAjbXa7dDfv1I5tAjWJJnlODR8YHY1aYfv+Onk1/X36ZooK9RHNP0aa9z/EwSCmQ/4nBPLZqa+ob7fpAum6vX4SfdWij3CnLemZd133L5dm8eU=
+sidebar_class_name: "delete api-method"
+info_path: reference/merchant/boomfi-merchants-api
+custom_edit_url: null
+proxy: https://proxy.writechoice.io/
+---
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Disable an Integration"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/integrations/{name}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+The **Disable an Integration** endpoint allows you to deactivate a specific integration within your organization identified by its unique `name`. Disabling an integration stops its operation while retaining its configuration, allowing you to re-enable it later if needed.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"description":"The name of the integration to be disabled.","name":"name","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK"},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{"code":{"description":"The error code returned by the server.\nExample: 400","type":"integer","example":400},"errors":{"description":"A list of detailed error objects.","type":"array","items":{"type":"object","properties":{"domain":{"description":"The domain associated with the error.\nExample: orders","type":"string","example":"orders"},"reason":{"description":"The reason for the error.\nExample: InsufficientQuantity","type":"string","example":"InsufficientQuantity"}},"title":"internal.SingleError"}},"message":{"description":"A descriptive message explaining the error.\nExample: Insufficient quantity","type":"string","example":"Insufficient quantity"}},"title":"internal.ErrorStruct"}},"title":"internal.ErrorResponse"}}}},"500":{"description":"Internal Server Error","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{"code":{"description":"The error code returned by the server.\nExample: 500","type":"integer","example":500},"errors":{"description":"A list of detailed error objects.","type":"array","items":{"type":"object","properties":{"domain":{"description":"The domain associated with the error.\nExample: orders","type":"string","example":"orders"},"reason":{"description":"The reason for the error.\nExample: Internal","type":"string","example":"Internal"}},"title":"internal.SingleError500"}},"message":{"description":"A descriptive message explaining the error.\nExample: Internal server error","type":"string","example":"Internal server error"}},"title":"internal.ErrorStruct500"}},"title":"internal.ErrorResponse500"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

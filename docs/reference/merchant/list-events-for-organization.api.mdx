@@ -1,0 +1,65 @@
+---
+id: list-events-for-organization
+title: "List Events for an Organization"
+description: "The **List Events for an Organization** endpoint allows you to retrieve a list of events associated with your organization. These events correspond to the same data received via webhooks, providing you with access to historical event records. This is useful for auditing purposes or in case of connection loss, ensuring you can always review actions such as subscription management, payment transactions, and plan creation."
+sidebar_label: "List Events for an Organization"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: reference/merchant/boomfi-merchants-api
+custom_edit_url: null
+proxy: https://proxy.writechoice.io/
+---
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List Events for an Organization"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/events"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+The **List Events for an Organization** endpoint allows you to retrieve a list of events associated with your organization. These events correspond to the same data received via webhooks, providing you with access to historical event records. This is useful for auditing purposes or in case of connection loss, ensuring you can always review actions such as subscription management, payment transactions, and plan creation.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"after","description":"Filters events to include only those that occurred after the specified timestamp.","in":"query","schema":{"type":"string"}},{"name":"before","description":"Filters events to include only those that occurred before the specified timestamp.","in":"query","schema":{"type":"string"}},{"name":"limit","description":"Specifies the maximum number of events to be included in the API response.","in":"query","schema":{"type":"integer","minimum":1,"maximum":100}},{"name":"page","description":"Indicates the page number of the results to be retrieved.","in":"query","schema":{"type":"integer","minimum":1}},{"name":"since","description":"Filters events to include only those that occurred on or after the specified timestamp.","in":"query","schema":{"type":"string"}},{"name":"sort","description":"Specifies the sorting order for the returned events.","in":"query","schema":{"type":"string","enum":["asc","desc"]}},{"name":"until","description":"Filters events to include only those that occurred on or before the specified timestamp.","in":"query","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"object","properties":{"items":{"type":"array","items":{"type":"object","properties":{"type":{"type":"string","description":"The type or category of the event."},"action":{"type":"string","description":"The action associated with the event."},"data":{"type":"object","additionalProperties":{},"description":"Additional data associated with the event."},"id":{"type":"string","description":"The unique identifier of the event."},"timestamp":{"type":"string","description":"The timestamp indicating when the event occurred."}},"title":"events.Event"}},"last_update":{"type":"string","description":"The timestamp indicating when the data was last updated."},"next":{"type":"integer","description":"The index indicating the next page of items."},"total":{"type":"integer","description":"The total number of items across all pages."}},"title":"internal.PaginatedItems-events_Event"},"error":{"type":"boolean"}},"title":"internal.PaginatedResponse-events_Event"}},"events":{"examples":{"response":{"value":{"data":{"items":[{"type":"Payment","action":"Created","id":"2Tpmnpckx3zXIlOLPGk35xOdfxB","timestamp":"2023-08-11T10:09:25.57Z","data":{"amount":"1.000308","created_at":"2023-08-11T10:09:23.742038Z","currency":"USDC","customer_id":"2TpmnpjFmjaERa3X6YKU3YpvC2d","id":"2Tpmnpckx3zXIlOLPGk35xOdfxB","invoice_id":"","next_action":"","payment_method":"Crypto","status":"Processing","updated_at":"2023-08-11T10:09:25.761828769Z"}},{"type":"Payment","action":"Updated","id":"2Tpmnpckx3zXIlOLPGk35xOdfxB","timestamp":"2023-08-11T10:09:26.308Z","data":{"amount":"1.000308","created_at":"2023-08-11T10:09:23.742038Z","currency":"USDC","customer_id":"2TpmnpjFmjaERa3X6YKU3YpvC2d","id":"2Tpmnpckx3zXIlOLPGk35xOdfxB","invoice_id":"","next_action":"","payment_method":"Crypto","status":"Processing","updated_at":"2023-08-11T10:09:26.333077304Z"}},{"type":"Subscription","action":"Created","id":"2TzGhOAljp2nTpMIWQqO2yEq7zL","timestamp":"2023-08-14T18:43:33.478Z","data":{"cancel_at_period_end":false,"created_at":"2023-08-14T18:39:47.083452Z","currency":"","customer_id":"2TpmnpjFmjaERa3X6YKU3YpvC2d","id":"2TzGhOAljp2nTpMIWQqO2yEq7zL","metadata":{},"reference":"","source":"Lago","status":"Cancelled","updated_at":"2023-08-14T18:43:33.510486984Z"}},{"type":"Subscription","action":"Updated","id":"2TzGhOAljp2nTpMIWQqO2yEq7zL","timestamp":"2023-08-14T18:43:39.833Z","data":{"cancel_at_period_end":false,"created_at":"2023-08-14T18:39:47.083452Z","currency":"","customer_id":"2TpmnpjFmjaERa3X6YKU3YpvC2d","id":"2TzGhOAljp2nTpMIWQqO2yEq7zL","metadata":{},"reference":"","source":"Lago","status":"Cancelled","updated_at":"2023-08-14T18:43:39.856479218Z"}},{"type":"Subscription","action":"Canceled","id":"2TzmtQXZfRWsfpV69YK8bMCFDzi","timestamp":"2023-08-14T23:09:52.41Z","data":{"cancel_at_period_end":false,"created_at":"2023-08-14T23:08:29.284198Z","currency":"","customer_id":"2TpmnpjFmjaERa3X6YKU3YpvC2d","id":"2TzmtQXZfRWsfpV69YK8bMCFDzi","metadata":{},"reference":"","source":"Lago","status":"Cancelled","updated_at":"2023-08-14T23:09:52.432514073Z"}},{"type":"Plan","action":"Created","id":"2U3jhiF0n0JazmSe1WTtBbX8oCK","timestamp":"2023-08-16T08:41:18.37Z","data":{"available_quantity":0,"billing_scheme":"FlatFee","created_at":"2023-08-16T08:41:17.981962Z","created_by":"2TzGhPCAfFWLPBjtc6h52Aao2S6","currency":"USD","enabled":true,"id":"2U3jhiF0n0JazmSe1WTtBbX8oCK","metadata":{},"name":"test ccy gbp","org_id":"2Tpmnmh6GHJXumKN1oBy2u56Ima","price":"1","recurring_interval":"Unknown","recurring_interval_count":1,"recurring_usage_type":"Unknown","reference":"","source":"Lago","trial_period":"","type":"OneTime","updated_at":"2023-08-16T08:41:18.406389167Z"}}]}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

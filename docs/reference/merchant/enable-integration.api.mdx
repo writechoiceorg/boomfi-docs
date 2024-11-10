@@ -1,0 +1,65 @@
+---
+id: enable-integration
+title: "Enable Integration"
+description: "The **Enable Integration** endpoint allows you to activate a specific integration within your organization identified by its unique `name`. Enabling an integration allows BoomFi to interact with the selected service, making its features available for use within your platform."
+sidebar_label: "Enable Integration"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVU1v20gM/SsET9tgYifF7kWnukAWCIKiQdMFduEaKC1R1mykmckM5dYV9N8LSnairJ0Ci157sawhh3z8eE8dJs7baGWH2bLDRbA3vFu0UmG2XPUrgwWnPNog1jvM8GPFcHZ25WhdM1w74U0kNZ2dAbsieOsEqK79lwQ734J4oFzsloSBIAXObWlzsE8X4YuVyjr1juDjhpz9NhpswU5sabmA9Q6sJGidfWgZPjtq+PMMBhTWbYDcs4j7/G+9b/60CkGNkXIZcoFUDIlrzoULSBy3NmcDDd1rKE1TMkkbOQFtydZDpaWP0CZ+BjbUJKWPzeyTQ4NCm4TZEic9Sbgy6AOPb9cFZshD484naNFgoEgNC8c0jOC44Vov+HJAPi1UPKwZxpjFDA2qI2bjw6DV+4GkQoORH1obucBMYssGU15xQ5h1KLugd5JE6zbY68gjp+Bd4qT21xcX+niO6v0NGsy9E3aiVgqhtvmAav5vUpfuByn63uDvp8K+pQI+8EPLSX42/h+n4utwoqMa7jhuOcJVjD7+XKbeYMNSeZ1u8APuoeUZzreX88m00rzTufRoMA3Zx2m3scYMK5GQsvm8oWBna++b0s6+7r6hTuPAzztFMc5kytJHUDQcPm3B3+eL2+vzm6t/DqtQMRUcUSFbV/rj9uiu7VnzjmNekZMEi9trCNFvbaGMgMSiq3ggexqo0Tx6i4eGHG1Yl9VGoDz3rZNkQCK5pGLgXTJAroDGR9atFSu1Aj6Vej8cyofh7CtTSHdtCD5qu7khqz1M48mbafsMaqPH6i5nF3qgQ2rITcIdqxn+R/a6pw35pYAvKuC4hsJfZR5qsk67Pax3t6fEEreXwzJOJNJgNoxhZbBS+mRL7Lo1Jf4r1n2vxw8tR/04rQxuKVpFM+qkTYPwYVZSnfgHI/vtw179XsH/ktOTFR3Y5pRqW6pbfUOD97w7SG+/6s2BbYp0NC3ynINMLh1JjbL9UUxu3999RIN0RPL7geT7Pxr+JKIp+8f8+tubF9y7bpSPvn/0H00v3tjXd/DW5qz6vv8Ozmnkfw==
+sidebar_class_name: "post api-method"
+info_path: reference/merchant/boomfi-merchants-api
+custom_edit_url: null
+proxy: https://proxy.writechoice.io/
+---
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Enable Integration"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/integrations/{name}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+The **Enable Integration** endpoint allows you to activate a specific integration within your organization identified by its unique `name`. Enabling an integration allows BoomFi to interact with the selected service, making its features available for use within your platform.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"description":"The name of the integration to be enabled.","name":"name","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"string"}}}},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"string"}}}},"500":{"description":"Internal Server Error","content":{"application/json":{"schema":{"type":"string"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
