@@ -2,9 +2,9 @@
   "websiteName": "BoomFi Documentation",
   "description": "Explore our guides and examples to start accepting crypto payments, exchanging cryptocurrencies, and integrating our card ramp solution.",
   "images": {
-    "logo": "media/logo_boomfi_docs_black.svg",
-    "favicon": "media/favicon.ico",
-    "darkLogo": "media/logo_boomfi_docs_white.svg"
+    "logo": "media/logo_docs_black.svg",
+    "favicon": "media/favicon_boomfi.ico",
+    "darkLogo": "media/logo_docs_white.svg"
   },
   "languages": [
     "en"
@@ -72,7 +72,7 @@
           ]
         },
         {
-          "categoryName": "TEST API",
+          "categoryName": "Merchant API",
           "pages": [
             {
               "groupName": "Organization",
