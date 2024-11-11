@@ -1,0 +1,21 @@
+:root {
+    /* Define your custom table header background color here */
+    --table-header-background-color: #; /* Replace #yourColorCode with the desired color */
+}
+
+.table-header {
+    background: var(--table-header-background-color) !important;
+}
+
+/* custom.css */
+
+:root {
+    /* Define your custom table header background and text colors here */
+    --table-header-background-color: #F9FAFB; /* Replace with the desired background color */
+    --table-header-text-color: #000000; /* Replace with the desired text color */
+}
+
+.table-header {
+    background: var(--table-header-background-color) !important;
+    color: var(--table-header-text-color) !important;
+}

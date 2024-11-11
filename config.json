@@ -22,7 +22,7 @@
   "apiFiles": [
     "merchant.json"
   ],
-  "homepage": "/introduction",
+  "homepage": "homepage.html",
   "changelog": false,
   "navbar": [
     {
