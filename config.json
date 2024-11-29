@@ -9,6 +9,11 @@
   "languages": [
     "en"
   ],
+  "integrations": {
+    "docsbot": {
+      "intercom": "n2vdhinq"
+    }
+  },
   "styles": {
     "mainColor": "#5F00E7",
     "darkModeMainColor": "#FFFFFF",
