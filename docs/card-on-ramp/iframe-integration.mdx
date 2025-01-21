@@ -5,28 +5,31 @@ description: "Suggest Edits"
 
 Integrating BoomFi's Card Ramp via iFrame allows you to embed the ramp functionality directly into your application. This approach minimizes the need for complex configurations and provides a seamless user experience. The iFrame method is ideal for quick integration and maintains a clean and consistent interface within your application.
 
-<Warning>
+<Callout type="warning">
   BoomFi must whitelist your domain before using Card Ramp in an `iframe`. Please contact [BoomFi's Support](/cdn-cgi/l/email-protection#05767075756a777145676a6a68636c2b7d7c7f) to request your whitelisting.
-</Warning>
+</Callout>
 
 ## How to Integrate
 
 To integrate BoomFi's Card Ramp into your application, you need to configure the [https://swap.boomfi.xyz/](https://swap.boomfi.xyz/) URL, then add this configured URL to an `iframe` component into your HTML.
 
-<Info>
+<Callout type="info">
   To learn what you can configure in the URL, refer to the [Configure Your Card Ramp](/docs/configure-your-card-ramp-url) page.
-</Info>
+</Callout>
 
 To embed BoomFi's Card Ramp using iFrame, you can use the following HTML snippet:
 
-<CodeGroup>
-  ```html html
+<Tabs>
+  <TabItem value="HTML" label="HTML" default>
+  ```html
   <div class="iframe-container">
     <iframe src="https://swap.boomfi.xyz/" allow="camera; microphone"></iframe>
   </div>
   ```
+  </TabItem>
 
-  ```css css
+  <TabItem value="CSS" label="CSS">
+  ```css
   .iframe-container {
     display: flex;
     justify-content: center;
@@ -42,13 +45,14 @@ To embed BoomFi's Card Ramp using iFrame, you can use the following HTML snippet
     height: 540px;
   }
   ```
-</CodeGroup>
+  </TabItem>
+</Tabs>
 
-<Warning>
+<Callout type="warning">
   To complete the verification process directly you need to add the `allow="camera; microphone"` option. This enables the KYC (Know Your Customer) process via our third-party provider, Sumsub.
 
   If camera and microphone permissions are not enabled, you can still proceed with the **Continue on phone** option to complete the verification on your mobile device.
-</Warning>
+</Callout>
 
 Adding this code into your HTML will present a result as follows:
 
@@ -56,7 +60,6 @@ Adding this code into your HTML will present a result as follows:
 
 Using event listeners allows your application to respond dynamically to the status of transactions within the iFrame. By listening for messages from the iFrame, you can provide real-time feedback to your users. The following code snippet is a suggestion on how to apply this:
 
-<CodeGroup>
   ```typescript typescript
   window.addEventListener(
     "message",
@@ -84,12 +87,10 @@ Using event listeners allows your application to respond dynamically to the stat
     false
   );
   ```
-</CodeGroup>
 
 The event above from BoomFi will have a payload, where in the example, the `event.data.status` property is accessed to handle each case. Below is an example of a payload you will find when receiving this event:
 
-<CodeGroup>
-  ```json json
+  ```json 
   {
     "data": {
       "id": "2ieU2MDpE0AxK8n0501xToOHs5d",
@@ -145,11 +146,3 @@ The event above from BoomFi will have a payload, where in the example, the `even
     }
   }
   ```
-</CodeGroup>
-
-***
-
-* [Table of Contents](#)
-
-* * [How to Integrate](#how-to-integrate)
-  * [Adding an Event Listener](#adding-an-event-listener)

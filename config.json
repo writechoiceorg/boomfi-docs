@@ -132,7 +132,10 @@
         {
           "categoryName": "Card On Ramp",
           "pages": [
-            "card-on-ramp/boomfi-card-on-ramp"
+            "card-on-ramp/card-ramp-overview",
+            "card-on-ramp/configure-your-card-ramp-url",
+            "card-on-ramp/iframe-integration",
+            "card-on-ramp/supported-countries-for-card-ramp"
           ]
         }
       ]
