@@ -1,0 +1,175 @@
+---
+title: "Manage Pay Links"
+---
+
+You can easily oversee generated pay links in the **Pay Link** dashboard section. Manage link specifics, and activate or deactivate as needed for seamless control. BoomFi enables you to create **Recurring** and **One-Time** pay links.
+
+<Image src="/media/docs/39177c3512829f5bce324ef06beacef4282e057bdb43c48dd5f0c24902b85a81-paylink-table.png"/>
+
+In the **Payment Links** section on the main page, displayed in the image above, you will find a table displaying all of your created payment links. The table includes various details, such as:
+
+| Field         | Description                                                                     |
+| ------------- | ------------------------------------------------------------------------------- |
+| **Product**   | Name of the product.                                                            |
+| **Link**      | URL link to the checkout for the product.                                       |
+| **Price**     | Price of the product.                                                           |
+| **Frequency** | How often the billing recurs (One-time, Recurring).                             |
+| **Source**    | The billing system that generated the paylink (BoomFi, Stripe, Chargebee, etc). |
+| **Status**    | Current availability of the paylink.                                            |
+| **Created**   | Date when the paylink was created.                                              |
+
+## One-time payment links
+
+With BoomFi, creating one-time pay links is a straightforward process.
+
+<Callout type="success" title="Benefits of One-time Pay Links:">
+  * **Simplicity and Convenience**: Eliminate the need for customers to navigate a traditional online store or checkout process.
+  * **Multi-chain Crypto Payments**: Accept payments in various cryptocurrencies across multiple blockchain networks.
+  * **Quick Setup**: Easily create one-time pay links in just a few clicks.
+</Callout>
+
+## Recurring payment links
+
+BoomFi streamlines the process of automating billing for subscribed customers, with billing intervals set for each link.
+
+<Callout type="success" title="Benefits of Recurring Pay Links:">
+  * **Predictable Revenue**: Generate a steady income stream, aiding in financial forecasting and planning.
+  * **Customer Retention**: Encourage customer loyalty by simplifying the payment process, making it easier for continued service or product use.
+  * **Reduced Churn**: Automated payments decrease the likelihood of cancellations due to forgetfulness or inconvenience, thus lowering churn rates.
+</Callout>
+
+## Create a pay link
+
+**How to Create a Pay Link:**
+
+1. **Access the BoomFi Dashboard**: Start by logging into your [**BoomFi account**](https://app.boomfi.xyz/dashboard).
+
+2. **Navigate to Pay Links**:
+   * Go to the [**Pay Link section**](https://app.boomfi.xyz/dashboard/pay-links) within your dashboard.
+
+3. **Create a New Pay Link**:
+   * Click the **Create a Pay Link** button located at the top right corner of the screen.
+
+4. **Enter Pay Link Details**:
+
+   * **Name**: Enter the name of your product.
+   * **Description** (optional): Add a brief description of the product or sale.
+   * **Amount**: Specify the price in Available Fiat and Cryptocurrencies.
+   * **Image URL** (optional): Add an image URL to be shown on the checkout.
+   * **Unique Product Reference** (Optional): Either set your identifier or use our automatic generator.
+   * **Payment Type**: Select either One-time or Recurring Payments.
+   * **Payment Method**: Define the possible payment methods for this paylink. The available payment methods is dependent on your active settlement options in your settings.
+   * **After Completion**: Choose what happens after payment is completed. Whether to show BoomFi's confirmation page, either with a custom message or a default one, or redirect your customer to an external website.
+     * **Allow repeat payments without confirmation**: Select if you want to allow user to repeat a payment. When enabled, customers will not be reminded that they have already made a payment for this payment link.
+
+5. **Finalize Your Pay Link**:
+   * Click **Continue** to create your Pay Link.
+
+6. **Share Your Pay Link**:
+   * ✅ Done! Your Pay Link is now ready.
+
+<Video src="https://github.com/writechoiceorg/boomfi/raw/main/videos/payment-link-creation.mp4"/>
+
+Your new pay link will be similar to this:
+
+```
+https://pay.boomfi.xyz/Pr1l6WoErz
+```
+
+## Sharing your Pay Link 🔗
+
+After generating your Pay Link with BoomFi, you can share it with your customers through multiple channels:
+
+<Callout type="info" title="Here are a few common ways to share your Pay Link:">
+  * **Email**: Copy and send the Pay Link directly to your customers via email.
+  * **Website or Blog**: Embed the Pay Link in an appropriate section on your website or blog.
+  * **Social Media**: Share the Pay Link on platforms like Facebook, Instagram, or Twitter.
+</Callout>
+
+### Pre-filling the Customer's Data in the Pay Link
+
+When you share a Pay Link with customers, you can improve their experience by pre-filling their name or email, eliminating the need for them to re-enter information you already have. This can be achieved by adding this information as query parameters of the pay link. The example link below shows you how to pre-fill both name and email:
+
+```
+https://pay.boomfi.xyz/Pr1l6WoErz?name=Tamara&[email protected]
+```
+
+## Connecting a customer to the Pay Link
+
+When sending a pay link to a customer, you have the option to make a connection of the pay link with your customer through this customer's `id`. You can incorporate their `id` at the end of the pay link's URL, adding the parameter `customer_ident`. Below, you can see an example:
+
+#### Original pay link URL
+
+```
+https://pay.boomfi.xyz/Pr1l6WoErz
+```
+
+#### Pay link URL with customer's id
+
+```
+https://pay.boomfi.xyz/Pr1l6WoErz?customer_ident=<YOUR_CUSTOMER_ID>
+```
+
+This will update the unique customer ID in the web app, which you can access through webhook calls.
+
+## Redirecting after a successful payment
+
+You can customize any BoomFi pay link to automatically redirect your customers after they complete a payment. This is possible by incorporating a redirect URL as a query parameter in the original pay link URL. To perform this, follow the example below:
+
+<Callout type="info">
+  If no `redirect_to` is set at the pay link level, the one provided in the query parameter will be used.
+</Callout>
+
+```
+https://pay.boomfi.xyz/2bm4YuFSaw011jTWbevVPA3137q?redirect_to=<REDIRECT_URL>
+```
+
+As the example above shows, a `redirect_to` query parameter can be added to allow BoomFi to know where to redirect the customer after the payment.
+
+#### Skip Redirect Delay
+
+By default, BoomFi applies a 10-second delay before redirecting the customer. To skip this delay and redirect instantly, add the `skip_redirect_delay=1` query parameter to the URL:
+
+  ```plaintext plaintext
+  https://pay.boomfi.xyz/2bm4YuFSaw011jTWbevVPA3137q?redirect_to=<REDIRECT_URL>&skip_redirect_delay=1
+  ```
+
+#### Retrieve Payment Information
+
+When redirecting to the specified URL, BoomFi adds a `pid` query parameter to the URL. This parameter contains the payment ID, allowing you to retrieve the payment details via the API. For more information, see the [Get Payment by ID API](/reference/get-payment-by-id).
+
+Example redirect URL with `pid` parameter:
+
+  ```plaintext plaintext
+  https://my.redirectUrl.com?pid=<PAYMENT_ID>
+  ```
+
+## Changing the amount and currency of a pay link
+
+BoomFi gives you the flexibility to change the amount and/or currency of a paylink on the go.
+
+<Callout type="success" title="Use cases for this feature:">
+  * Allow your customer to pay in another currency.
+  * Give customers the ability to top-up their balance/wallet.
+  * Tipping or donations are to be added to the final amount.
+</Callout>
+
+To use this feature, you will make an API call to the [Generate Variant URL endpoint](/reference/create-variant-paylink-url) and add the following query parameters:
+
+* `amount`: The new desired amount of the paylink.
+* `currency`: The new currency the pay link will be paid with.
+
+You can also add the following to edit your pay link URL further:
+
+* `customer_ident`: A customer's unique identifier to be connected to the generated pay link.
+* `redirect_to`: a URL to redirect the customer upon successful payment.
+
+## Managing Your Pay Links
+
+BoomFi's dashboard allows you to efficiently manage your Pay Links. Here’s what you can find:
+
+* **Information**: View specific details about the Pay Link’s attributes and settings in the Main details, Link details, and Checkout Information sections.
+* **Transactions**: Check the payment history associated with the Pay Link.
+* **Edit details**: Click on the "**• • •**" button to edit details or/and deactivate the payment link. BoomFi allows you to edit almost all fields, except changing the type of the paylink between one-time and recurring.
+
+<Image src="/media/docs/e633d1815c8485c676acede714d8accc17d8cd78b6773379f805c3cf61920ee0-paylink-details.png"/>

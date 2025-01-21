@@ -1,0 +1,203 @@
+---
+title: "Webhook Signatures"
+description: "Suggest Edits"
+---
+
+BoomFi implements signed webhooks using asymmetric cryptography and timestamps to ensure the security and authenticity of webhook requests. By verifying these signatures, you can confirm that webhook requests are genuinely from BoomFi and protect against replay attacks.
+
+## Verifying Webhook Signatures
+
+When BoomFi sends a webhook request, it includes a digital signature and a timestamp in the request headers. The signature is generated using BoomFi's private key, and you can verify it using the corresponding public key available in your Merchant Dashboard. This verification process ensures:
+
+* **Authenticity**: Confirms that the webhook is from BoomFi.
+* **Integrity**: Ensures the payload has not been tampered with.
+* **Protection against replay attacks**: Validates the freshness of the request using the timestamp.
+
+### How It Works
+
+1. **Signing**: BoomFi signs the concatenation of the timestamp and the payload using its private key.
+2. **Headers**: The `X-BoomFi-Timestamp` and `X-BoomFi-Signature` headers are added to the webhook request.
+3. **Verification**: You use the public key to verify the signature against the received payload and timestamp.
+
+### Managing Your Webhook Public Key
+
+You can view and manage your webhook signing public key in the BoomFi Merchant Dashboard. Click the rotate icon next to your public key to rotate your keypair.
+
+![](/images/docs/ee52cf16d9f30888088320e8dea9f94c77c7c546783bcb4a71fdc9ee2599c302-merchant-settings-webhook.png)
+
+<Warning>
+  Store your public key securely and rotate it periodically or if you suspect any compromise.
+</Warning>
+
+### Verification Steps
+
+To verify the webhook signature, follow these steps:
+
+1. **Retrieve Headers**:
+
+   * `X-BoomFi-Timestamp`: The UNIX timestamp when the webhook was sent.
+   * `X-BoomFi-Signature`: The Base64-encoded digital signature.
+
+2. **Validate Timestamp**: Check that the timestamp is recent (e.g., within the last 5 minutes). Discard the request if the timestamp is stale to prevent replay attacks.
+
+3. **Construct the Message**: Concatenate the timestamp, a period (`.`), and the raw request body (as a string).
+
+   * **Format**: `message = timestamp + "." + body`
+
+4. **Hash the Message**: Compute the SHA-256 hash of the constructed message.
+
+5. **Verify the Signature**: Decode the public key using base64 and verify the RSA signature of the hashed message matches the public key.
+
+## Code Examples
+
+Below are Python, TypeScript, and Go code examples to help you implement the verification process.
+
+<CodeGroup>
+  ```python python
+  import base64
+  import hashlib
+  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+  from cryptography.hazmat.primitives import hashes, serialization
+  from cryptography.exceptions import InvalidSignature
+
+  def verify_signature(public_key_pem: str, message: bytes, signature_base64: str) -> None:
+      try:
+          public_key = serialization.load_pem_public_key(public_key_pem.encode('utf-8'))
+
+          signature = base64.b64decode(signature_base64)
+
+          public_key.verify(
+              signature,
+              message,
+              padding.PKCS1v15(),
+              hashes.SHA256()
+          )
+      except InvalidSignature:
+          raise ValueError("Invalid signature")
+      except Exception as e:
+          raise ValueError(f"Verification failed: {e}")
+  ```
+
+  ```typescript typescript
+  import { createVerify } from "crypto";
+
+  function verifySignature(
+    payload: string,
+    signature: string,
+    publicKey: string
+  ): boolean {
+    const verifier = createVerify("SHA256");
+    verifier.update(Buffer.from(payload));
+    verifier.end();
+    return verifier.verify(publicKey, signature, "base64");
+  }
+
+  const payload = {
+    id: "pay_2rgC8c3USpUBFJTIl59BjsYXvbT",
+    parent_id: "",
+    org_id: "2Tpmnmh6GHJXumKN1oBy2u56Ima",
+    amount: "100",
+    currency: "EUR",
+    invoice_id: "",
+    source: "BoomFi",
+    payment_method: "Ramp",
+    customer_id: "2fGrCZuwDkUlagUIESEI2PLqJbB",
+    status: "Failed",
+    next_action: "",
+    scheduled_time: 0,
+    created_at: "2025-01-15T19:59:32.408Z",
+    updated_at: "2025-01-15T20:00:01.659043932Z",
+    amount_usd: "102.91",
+    metadata: { ext_partner_id: "2bm2Qnei7vLxE7Ueb73Cu9dHVgn", ext_ref: "123" },
+    org: { id: "org_2Tpmnmh6GHJXumKN1oBy2u56Ima", name: "BoomFi" },
+    customer: {
+      id: "cus_2fGrCZuwDkUlagUIESEI2PLqJbB",
+      org_id: "2Tpmnmh6GHJXumKN1oBy2u56Ima",
+      name: "",
+      email: "[email protected]",
+      phone: "",
+      wallet_address: "",
+      deleted_at: null,
+      reference: "user-test-b791304c-0764-429c-9b2b-9190ed830c0a",
+      metadata: {},
+      created_at: "2024-04-18T11:02:08.795Z",
+      updated_at: "2024-04-18T11:02:08.795Z",
+    },
+    event: "Payment.Updated",
+  };
+
+  const signature =
+    "22sx8gOWMSjVIRHkzcdurZcD5XmBILq1UFMGbxQMx3In0xUdW5Lt8gQWje4zY2fUcIQ9Fs1VxCTttqESm+BhkzaIQGVq12QsQgXpmX+pcP/rbg3K+EqqlYiRZIAdXPukZXRdS3eGvPC579lTSqOkGayAE/s9m3mmQpahPVOUihdsAWXE5XdKhsJ7PZwHv9FZObtMZapa8IY7GZmOCPDxMN94fRsn4h1glu//dI1CGhMccYMqXSNXZUo6YR09m4JIpvZ6LtpWyB9FDfZ6h7EHNaaihNk66Kifw61YUmLrUqSwcYMmXdx+58vfGiH77LbJqm+fNi7K+f11/N0tksRaUQ==";
+  const timestamp = "1736971202";
+  const message = `${timestamp}.${JSON.stringify(payload)}`;
+
+  const publicKey = `
+  -----BEGIN PUBLIC KEY-----
+  MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3KbMiQLZxO7hNkEWftxd
+  789isb+cjk4drp4Q0nCKUwVmf717/uOY3vMLwQWWxYj8aLL1kc6+n0WvleP9AcAD
+  LmNI2GvPYYJZ6zBnYnICjdHFdq75aJiA9z2utDDjrXYTyqVBA0LUF63rFjoRpwat
+  OTolRfeKE+1IxE8IIujtvG/xIj7hh6P4cHhgAnboSMX/8N01nbZcJilDw/C3/Mhu
+  5kCOrkIqtpPeb6LB4yog/dTU3wpIYclQ43Wvd0ll/phLuJV0nM8nRKjLunxUwYM4
+  P6q3lxgDNcXjAh9PlVJ7stDK4KSoyFPFSI8zA72MwowT5qWuQ4rUEFpH/lSaV66N
+  iQIDAQAB
+  -----END PUBLIC KEY-----`;
+
+  const isValid = verifySignature(message, signature, publicKey);
+  console.log("isSignatureValid:", isValid);
+  ```
+
+  ```go go
+  package main
+
+  import (
+  	"crypto"
+  	"crypto/rsa"
+  	"crypto/sha256"
+  	"crypto/x509"
+  	"encoding/base64"
+  	"encoding/pem"
+  	"errors"
+  	"fmt"
+  )
+
+  func VerifySignature(publicKeyPEM string, message []byte, signatureBase64 string) error {
+  	block, _ := pem.Decode([]byte(publicKeyPEM))
+  	if block == nil || block.Type != "PUBLIC KEY" {
+  		return errors.New("failed to decode PEM block containing public key")
+  	}
+
+  	publicKey, err := x509.ParsePKIXPublicKey(block.Bytes)
+  	if err != nil {
+  		return fmt.Errorf("failed to parse public key: %w", err)
+  	}
+
+  	rsaPublicKey, ok := publicKey.(*rsa.PublicKey)
+  	if !ok {
+  		return errors.New("not an RSA public key")
+  	}
+
+  	signature, err := base64.StdEncoding.DecodeString(signatureBase64)
+  	if err != nil {
+  		return fmt.Errorf("failed to decode signature: %w", err)
+  	}
+
+  	h := sha256.New()
+  	h.Write(message)
+  	hashedMessage := h.Sum(nil)
+
+  	return rsa.VerifyPKCS1v15(rsaPublicKey, crypto.SHA256, hashedMessage, signature)
+  }
+  ```
+</CodeGroup>
+
+***
+
+* [Table of Contents](#)
+
+* * [Verifying Webhook Signatures](#verifying-webhook-signatures)
+
+    * [How It Works](#how-it-works)
+    * [Managing Your Webhook Public Key](#managing-your-webhook-public-key)
+    * [Verification Steps](#verification-steps)
+
+  * [Code Examples](#code-examples)

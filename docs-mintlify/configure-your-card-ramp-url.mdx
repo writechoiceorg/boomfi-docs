@@ -1,0 +1,105 @@
+---
+title: "Configure your Card Ramp URL"
+description: "Suggest Edits"
+---
+
+The following query parameters can be added to the [https://swap.boomfi.xyz/](https://swap.boomfi.xyz/) URL to customize BoomFi's Card Ramp solution:
+
+| Parameter Name      | Description                                                                                                                                                                                                                                                                                                                                                                                    | Valid Values                                                                                                     |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `sell_ccy`          | The fiat currency code that the user wants to sell.                                                                                                                                                                                                                                                                                                                                            | Refer to the [Supported Fiat Currencies](/docs/networks-and-currencies#supported-fiat-currencies) table.         |
+| `sell_amount`       | The amount of fiat currency to sell. Required if `sell_ccy` is provided.                                                                                                                                                                                                                                                                                                                       | Any positive number.                                                                                             |
+| `chain_id`          | The identifier of the blockchain network for the cryptocurrency token. Examples include Ethereum (ETH), Binance Smart Chain (BSC), Polygon, Arbitrum, Solana, and Tron.                                                                                                                                                                                                                        | Refer to the [Supported Blockchain Networks](/docs/networks-and-currencies#supported-blockchain-networks) table. |
+| `buy_ccy`           | The symbol of the cryptocurrency to buy. Optional; must correspond with `buy_token` and `chain_id`.                                                                                                                                                                                                                                                                                            | Must match the `buy_token`.                                                                                      |
+| `buy_amount`        | The amount of cryptocurrency to buy. Applied only if `buy_ccy` is provided and valid.                                                                                                                                                                                                                                                                                                          | Any positive number.                                                                                             |
+| `buy_token`         | The contract address of the cryptocurrency token to buy. Must be a valid, checksummed address specific to the token's blockchain.                                                                                                                                                                                                                                                              | Valid token contract address.                                                                                    |
+| `recipient_wallet`  | The wallet address to receive the cryptocurrency. The address must be compatible with the specified `chain_id`.                                                                                                                                                                                                                                                                                | Valid wallet address matching the `chain_id`.                                                                    |
+| `redirect_to`       | The URL to which the user will be redirected after a successful transaction. Ensure the URL is correct and functional; invalid URLs will be ignored.                                                                                                                                                                                                                                           | Valid URL format.                                                                                                |
+| `locked_fields`     | A list of fields to lock, preventing the user from modifying them during the transaction. Locking ensures these fields remain fixed. See the [Locked Fields](#locked-fields) use cases for examples.                                                                                                                                                                                           | `sell_amount`, `sell_ccy`, `buy_amount`, `buy_token`                                                             |
+| `skip_quote_screen` | Set `skip_quote_screen=1` to bypass the quote screen. When using this parameter, ensure the following: - **Required Parameters**: `chain_id`, `buy_token`, `sell_ccy`, and either `buy_amount` or `sell_amount` (do not provide both).- **Lock the following fields**: Use `locked_fields` to lock `buy_token`, `sell_ccy`, and the amount field you provided (`buy_amount` or `sell_amount`). | `1`                                                                                                              |
+| `ext_partner_id`    | Your organization ID, found on the Merchant Dashboard under **Settings > Merchant**. If valid and a webhook URL is set, a payment webhook payload will be sent.                                                                                                                                                                                                                                | Valid Org ID.                                                                                                    |
+| `ext_ref`           | An external reference string you choose, such as a session identifier. If set alongside a valid `ext_partner_id`, it will be included in the payment webhook payload.                                                                                                                                                                                                                          | Any string.                                                                                                      |
+
+<Info>
+  If both `buy_amount` and `sell_amount` are provided and valid, `buy_amount` will take priority.
+</Info>
+
+## Use cases
+
+The following is an example URL using most parameters on the table:
+
+```
+https://swap.boomfi.xyz/?locked_fields=buy_amount&sell_ccy=GBP&sell_amount=10&chain_id=1&buy_ccy=USDC&buy_token=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48&recipient_wallet=0x844Acef789989Cb6E21E0F07DD4e894709f92F96&redirect_to=https://www.youtube.com/watch?v=dQw4w9WgXcQ
+```
+
+### Locked Fields
+
+To lock a field, you need to add the `locked_field` parameter. The example below locks the sell amount to the value set in the `sell_amount` field:
+
+```
+https://swap.boomfi.xyz/?locked_fields=sell_amount&locked_fields=buy_token&sell_ccy=GBP&sell_amount=10&chain_id=1&buy_ccy=USDC&buy_token=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48&recipient_wallet=0x844Acef789989Cb6E21E0F07DD4e894709f92F96&redirect_to=https://www.youtube.com/watch?v=dQw4w9WgXcQ
+```
+
+<Warning>
+  It's important to note the following constraints:
+
+  * In order to lock the `sell_amount`, you must also lock the `sell_ccy`.
+  * In order to lock the `buy_amount`, you need to lock the `buy_ccy`.
+</Warning>
+
+Also, you can lock multiple fields in the URL. To do this, add multiple `locked_fields` query parameters to the URL, one for each field you need to be locked. Below, you will find an example of locking `sell_amount` and `sell_ccy`, making the option locked with a sell currency of GBP and a sell amount of 10:
+
+```
+https://swap.boomfi.xyz/?locked_fields=sell_amount&locked_fields=sell_ccy&sell_ccy=GBP&sell_amount=10&chain_id=1&buy_ccy=USDC&buy_token=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48&recipient_wallet=0x844Acef789989Cb6E21E0F07DD4e894709f92F96&redirect_to=https://www.youtube.com/watch?v=dQw4w9WgXcQ
+```
+
+### Skipping Quote Screen
+
+Below, you find two examples to skip the quote screen by adding the `skip_quote_screen=1` query parameter:
+
+#### Buy 10000 USDC on Ethereum, Sell GBP
+
+```
+https://swap.boomfi.xyz/?chain_id=1&buy_amount=10000&buy_token=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48&sell_ccy=GBP&locked_fields=buy_token&locked_fields=sell_ccy&locked_fields=buy_amount&skip_quote_screen=1
+```
+
+Here, the following required parameters were added:
+
+* `chain_id=1`
+* `buy_token=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`
+* `sell_ccy=GBP`
+* `buy_amount=10000`
+
+And, the following fields were locked:
+
+* `locked_fields=buy_token`
+* `locked_fields=sell_ccy`
+* `locked_fields=buy_amount`
+
+#### Buy 1000 GBP worth of USDC on Ethereum
+
+```
+https://swap.boomfi.xyz/?chain_id=1&sell_amount=1000&buy_token=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48&sell_ccy=GBP&locked_fields=buy_token&locked_fields=sell_ccy&locked_fields=sell_amount&skip_quote_screen=1
+```
+
+In this example, the following required parameters are set:
+
+* `chain_id=1`
+* `buy_token=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`
+* `sell_ccy=GBP`
+* `sell_amount=1000`
+
+And, the following fields are locked:
+
+* `locked_fields=buy_token`
+* `locked_fields=sell_ccy`
+* `locked_fields=sell_amount`
+
+***
+
+* [Table of Contents](#)
+
+* * [Use cases](#use-cases)
+
+    * [Locked Fields](#locked-fields)
+    * [Skipping Quote Screen](#skipping-quote-screen)

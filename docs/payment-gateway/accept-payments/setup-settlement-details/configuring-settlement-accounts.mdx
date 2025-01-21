@@ -1,0 +1,320 @@
+---
+title: "Configuring Accounts with BoomFi's API"
+---
+
+In addition to using BoomFi's Dashboard to configure your settlement accounts, you can also use BoomFi's API to create and manage those accounts. The Accounts API Module offers you five endpoints where you can create, retrieve details, update, and delete your accounts from the system.
+
+## Retrieving a List of Accounts
+
+You can retrieve all your registered accounts with the [List Merchant Settlement Accounts](/reference/list-settlement-accounts) endpoint. In addition to retrieving all your accounts, you can use this endpoint to filter accounts by their `reference` code (used to group multiple accounts). Below, you find example requests for both cases and an example of the response's schema:
+
+
+<Tabs>
+  <TabItem value="List All Accounts" label="List All Accounts" default>
+    ```bash
+      curl --request GET \
+          --url https://mapi-test.boomfi.xyz/v1/accounts \
+          --header 'accept: application/json' \
+          --header 'x-api-key: <YOUR_API_KEY>'
+    ```
+  </TabItem>
+  <TabItem value="Filter by Reference code" label="Filter by Reference code">
+    ```bash
+    curl --request GET \
+        --url 'https://mapi-test.boomfi.xyz/v1/accounts?reference=my_personal_accounts' \
+        --header 'accept: application/json' \
+        --header 'x-api-key: <YOUR_API_KEY>'
+    ```
+  </TabItem>
+  <TabItem value="Response" label="Response">
+    ```json
+    {
+      "data": {
+        "items": [
+          {
+            "id": 2541,
+            "org_id": "2UAPv7tPKLAGIwuP53JXsB8bhOr",
+            "parent_id": {
+              "Int64": 0,
+              "Valid": false
+            },
+            "reference": "my_personal_accounts",
+            "account_type": "CryptoPayIn",
+            "name": "my_first_account",
+            "chain_id": 8453,
+            "address": "0x4649f19A2c42C8c88b668A9198FbAd51103d8E33",
+            "currencies": [
+              "ETH",
+              "USDC"
+            ],
+            "account_number": "",
+            "sort_code": "",
+            "enabled": true,
+            "state": "Ready",
+            "created_by": {
+              "String": "",
+              "Valid": false
+            },
+            "created_at": "2024-10-31T14:22:23.829Z",
+            "updated_at": "2024-10-31T14:22:23.829Z",
+            "deleted_at": null
+          }
+        ]
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+
+<Callout type="info">
+  Remember to replace `<YOUR_API_KEY>` with your actual API key for all requests presented on this page.
+</Callout>
+
+## Creating a Settlement Account
+
+To create a new settlement account with BoomFi's API, use the [Create a Merchant Settlement Account](/reference/create-settlement-account) endpoint. The following code block exemplifies the use of this endpoint with a successful response example:
+
+<Tabs>
+  <TabItem value="Request" label="Request" default>
+    ```bash
+    curl --request POST \
+        --url https://mapi-test.boomfi.xyz/v1/accounts \
+        --header 'accept: application/json' \
+        --header 'content-type: application/json' \
+        --header 'x-api-key: <YOUR_API_KEY>' \
+        --data '
+    {
+      "type": "CryptoPayIn",
+      "name": "my_first_account",
+      "reference": "my_personal_accounts",
+      "chain_id": 1,
+      "address": "0x4649f19a2c42C8C88b668a9198fBad51103D8E33",
+      "currencies": [
+        "ETH",
+        "USDC"
+      ]
+    }
+    '
+    ```
+  </TabItem>
+  <TabItem value="Response" label="Response">
+    ```json
+    {
+      "data": {
+        "id": 2541,
+        "org_id": "2UAPv7tPKLAGIwuP53JXsB8bhOr",
+        "parent_id": null,
+        "reference": "my_personal_accounts",
+        "account_type": "CryptoPayIn",
+        "name": "my_first_account",
+        "chain_id": 8453,
+        "address": "0x4649f19A2c42C8c88b668A9198FbAd51103d8E33",
+        "currencies": [
+          "ETH",
+          "USDC"
+        ],
+        "account_number": "",
+        "sort_code": "",
+        "enabled": true,
+        "state": "Ready",
+        "created_by": "string",
+        "created_at": "2024-10-31T14:22:23.828977931Z",
+        "updated_at": "2024-10-31T14:22:23.828978141Z",
+        "deleted_at": null
+      },
+      "message": "Settlement account updated successfully"
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+<Callout type="warning">
+  Currently, BoomFi only supports `CryptoPayIn`.
+</Callout>
+
+The response JSON will provide you with the unique identifier of the created account with the `data.id` property. You can use this ID to [retrieve](#retrieve-a-settlement-account-by-id), [update](#update-a-settlement-account), or [delete](#delete-a-settlement-account) the respective account.
+
+## Retrieve a Settlement Account by ID
+
+With an account ID, you can retrieve its details using the [Retrieve a Merchant Settlement Account by ID](/reference/get-settlement-account-by-id) endpoint. You need to add the `accountId` as a path parameter of the request, as shown below:
+
+<Tabs>
+  <TabItem value="Request" label="Request" default>
+  ```bash
+  curl --request GET \
+       --url https://mapi-test.boomfi.xyz/v1/accounts/<ACCOUNT_ID> \
+       --header 'accept: application/json' \
+       --header 'x-api-key: <YOUR_API_KEY>'
+  ```
+  </TabItem>
+  <TabItem value="Response" label="Response">
+    ```json
+      {
+      "data": {
+        "id": 2541,
+        "org_id": "2UAPv7tPKLAGIwuP53JXsB8bhOr",
+        "parent_id": {
+          "Int64": 0,
+          "Valid": false
+        },
+        "reference": "my_personal_accounts",
+        "account_type": "CryptoPayIn",
+        "name": "my_first_account",
+        "chain_id": 8453,
+        "address": "0x4649f19A2c42C8c88b668A9198FbAd51103d8E33",
+        "currencies": [
+          "ETH",
+          "USDC"
+        ],
+        "account_number": "",
+        "sort_code": "",
+        "enabled": true,
+        "state": "Ready",
+        "created_by": {
+          "String": "",
+          "Valid": false
+        },
+        "created_at": "2024-10-31T14:22:23.829Z",
+        "updated_at": "2024-10-31T14:22:23.829Z",
+        "deleted_at": null
+      },
+      "message": "Retrieved org settlement account successfully"
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+Remember to replace `<ACCOUNT_ID>` with the actual account's identifier.
+
+This will return a JSON with all the respective account data.
+
+## Update a Settlement Account
+
+You can also use the account ID to update the respective account information. You can use the [Update a Merchant Settlement Account](/reference/update-settlement-account) endpoint to update data and enable/disable the account.
+
+### Updating Data
+
+You can use the update endpoint to change the following information:
+
+* `name`: The new name for the merchant settlement account.
+* `address`: The new wallet address for the merchant settlement account.
+* `currencies`: A list of currency codes to update the account's supported currencies.
+
+<Callout type="info">
+  its important to remember that any values passed will rewrite the current information in the system.
+</Callout>
+
+<Tabs>
+
+  <TabItem value="Request" label="Request">
+  ```bash
+  curl --request PATCH \
+       --url https://mapi-test.boomfi.xyz/v1/accounts/<ACCOUNT_ID> \
+       --header 'accept: application/json' \
+       --header 'content-type: application/json' \
+       --header 'x-api-key: <YOUR_API_KEY>' \
+       --data '
+  {
+    "name": "my_updated_account",
+    "address": "0x4649f19A2c42C8c88b668A9198FbAd51103d8E22",
+    "currencies": [
+      "ETH"
+    ]
+  }
+  '
+  ```
+  </TabItem>
+
+  <TabItem value="Response" label="Response">
+  ```json
+  {
+    "data": {
+      "id": 2541,
+      "org_id": "2UAPv7tPKLAGIwuP53JXsB8bhOr",
+      "parent_id": null,
+      "reference": "my_personal_accounts",
+      "account_type": "CryptoPayIn",
+      "name": "my_updated_account",
+      "chain_id": 8453,
+      "address": "0x4649f19A2c42C8c88b668A9198FbAd51103d8E22",
+      "currencies": [
+        "ETH"
+      ],
+      "account_number": "",
+      "sort_code": "",
+      "enabled": true,
+      "state": "Ready",
+      "created_by": "string",
+      "created_at": "2024-10-31T14:22:23.828977931Z",
+      "updated_at": "2024-10-31T15:08:50.618971141Z",
+      "deleted_at": null
+    },
+    "message": "Settlement account updated successfully"
+  }
+  ```
+  </TabItem>
+  </Tabs>
+
+
+### Enable/Disable the Account
+
+The Update endpoint can also be used to enable/disable an account by adding the `enabled` flag to the request:
+
+* `true`: Activates the account.
+* `false`: deactivates the account.
+
+The code below exemplifies disabling the account:
+
+<Tabs>
+  <TabItem value="Request" label="Request" default>
+  ```bash
+  curl --request PATCH \
+       --url https://mapi-test.boomfi.xyz/v1/accounts/<ACCOUNT_ID> \
+       --header 'accept: application/json' \
+       --header 'content-type: application/json' \
+       --header 'x-api-key: <YOUR_API_KEY>' \
+       --data '{"enabled":false}'
+  ```
+  </TabItem>
+
+  <TabItem value="Response" label="Response">
+  ```json
+  {
+    "data": {
+      "id": 2541,
+      "org_id": "2UAPv7tPKLAGIwuP53JXsB8bhOr",
+      "parent_id": null,
+      "reference": "my_personal_accounts",
+      "account_type": "CryptoPayIn",
+      "name": "my_updated_account",
+      "chain_id": 8453,
+      "address": "0x4649f19A2c42C8c88b668A9198FbAd51103d8E22",
+      "currencies": [
+        "ETH"
+      ],
+      "account_number": "",
+      "sort_code": "",
+      "enabled": false,
+      "state": "Ready",
+      "created_by": "string",
+      "created_at": "2024-10-31T14:22:23.828977931Z",
+      "updated_at": "2024-10-31T15:08:50.618971141Z",
+      "deleted_at": null
+    },
+    "message": "Settlement account updated successfully"
+  }
+  ```
+  </TabItem>
+</Tabs>
+
+## Delete a Settlement Account
+
+Use the [Delete a Merchant Settlement Account](/reference/delete-settlement-account) endpoint to remove an account from BoomFi. Add the account ID as a path parameter to identify the account you want to delete. The example below shows how to perform this:
+
+  ```bash Request
+  curl --request DELETE \
+       --url https://mapi-test.boomfi.xyz/v1/accounts/<ACCOUNT_ID> \
+       --header 'accept: application/json' \
+       --header 'x-api-key: <YOUR_API_KEY>'
+  ```

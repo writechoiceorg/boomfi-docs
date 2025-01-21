@@ -1,0 +1,74 @@
+---
+title: "Subscribing a Customer with Chargebee"
+description: "Suggest Edits"
+---
+
+To correctly subscribe a customer to a new plan in Chargebee, using BoomFi as the payment processor, you will need to follow the steps below.
+
+<Warning>
+  Using a webhook is highly recommended due to the significant throttling penalties associated with relying solely on API calls.
+</Warning>
+
+## Step 1: Integrate Chargebee and BoomFi
+
+The initial step of the whole process is described on the [BoomFi and Chargebee](/docs/chargebee) integration page. Validate if your integration is connected by accessing **Integrations** inside **Settings**. It should present you with the following image for the Chargebee integration:
+
+![](/images/docs/0ababad-chargebee-connected.png)
+
+## Step 2: Create a plan in Chargebee
+
+In your Chargebee dashboard, you will need a plan to begin with. If you do not have a plan created yet, follow these steps to create a new one:
+
+1. Access the **Plans** page under the **Product Catalog** section.
+2. Select **Create a Plan**.
+3. Add the required information.
+4. **Create** the new plan.
+
+After creating it, you will reach a page with the following information about your plan:
+
+![](/images/docs/08ae908-chargebee-created-plan.png)
+
+Now you need to **Set Price** for each frequency the plan applies to:
+
+1. Click **Set Price** for the desired **Frequency**.
+2. Define the price for the plan.
+
+For example, the image presents an ACME Premium plan with a Monthly frequency price of $12.99.
+
+![](/images/docs/d7555a9-chargebee-created-plan-price.png)
+
+<Check>
+  As a new plan is created in Chargebee, BoomFi automatically generates a new Pay Link for this plan.
+
+  ![](/images/docs/9e98489-boomfi-paylink.png)
+</Check>
+
+## Step 3: Subscribing a customer
+
+Still, in the Chargebee dashboard, you will connect customers to the plan they want to subscribe to by creating a new subscription.
+
+1. Access **Subscriptions**.
+2. Select **Create Subscription**.
+3. Select a customer to subscribe or create a new customer.
+4. Select the plan your customer wants to subscribe to.
+5. Inside **Billing Info**, you need to turn off **Auto-collection**. This is required for BoomFi integration.
+
+<Warning>
+  This must be turned off to allow BoomFi to automatically tag the subscription with a paylink.
+</Warning>
+
+After a moment, under the subscription details page in Chargebee, you will find BoomFi's pay link for this subscription under **Invoice Note**:
+
+![](/images/docs/cf27572-invoice-note.png)
+
+The subscription is completed, and the customer will receive BoomFi pay links to execute their subscription payments.
+
+For future recurring payments, Chargebee automatically generates invoices, initially marked as **unpaid**, which are then updated to **paid** status following successful payment collection by BoomFi.
+
+***
+
+* [Table of Contents](#)
+
+* * [Step 1: Integrate Chargebee and BoomFi](#step-1-integrate-chargebee-and-boomfi)
+  * [Step 2: Create a plan in Chargebee](#step-2-create-a-plan-in-chargebee)
+  * [Step 3: Subscribing a customer](#step-3-subscribing-a-customer)

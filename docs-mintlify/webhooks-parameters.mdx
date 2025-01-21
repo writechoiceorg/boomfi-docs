@@ -1,0 +1,57 @@
+---
+title: "Webhooks Parameters"
+description: "Suggest Edits"
+---
+
+Below is a catalog of parameters sent within our webhook responses.
+
+| Parameter                     | Type       | Description                                                                                                                                                         |
+| ----------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                            | `string`   | Unique identifier for the webhook configuration.                                                                                                                    |
+| org\_id                       | `string`   | Identifier for the organization associated with the webhook.                                                                                                        |
+| name                          | `string`   | The name assigned to the webhook.                                                                                                                                   |
+| description                   | `string`   | A description (if any) that provides additional context about the webhook.                                                                                          |
+| type                          | `string`   | Specifies pay link type, such as "OneTime" or "Recurring."                                                                                                          |
+| billing\_scheme               | `string`   | Describes the billing scheme, e.g., "FlatFee."                                                                                                                      |
+| price                         | `string`   | The monetary amount associated with the pay link.                                                                                                                   |
+| currency                      | `string`   | The currency in which the price is defined.                                                                                                                         |
+| customer                      | `object`   | details of the customer.                                                                                                                                            |
+| customer.id                   | `string`   | Identifier for the customer associated with the webhook (if applicable).                                                                                            |
+| customer.created\_at          | `DateTime` | A timestamp indicating the creation of the customer.                                                                                                                |
+| customer.updated\_at          | `DateTime` | A timestamp indicating the last update to the customer data.                                                                                                        |
+| customer.org\_id              | `string`   | Identifier of the customer's organization.                                                                                                                          |
+| customer.reference            | `string`   | Pay link accept optional parameter of customer\_ident which will be captured here and sent through webhook events.                                                  |
+| customer.email                | `string`   | The customer's email address.                                                                                                                                       |
+| customer.name                 | `string`   | The customer's name.                                                                                                                                                |
+| customer.phone                | `string`   | The customer's phone number.                                                                                                                                        |
+| customer.wallet\_address      | `string`   | The customer's wallet address.                                                                                                                                      |
+| customer.deleted\_at          | `object`   | Details of the deletion time.                                                                                                                                       |
+| customer.deleted\_at.Time     | `DateTime` | A timestamp indicating the deletion of the customer.                                                                                                                |
+| customer.deleted\_at.Valid    | `boolean`  | Indicates if the deletion is validated.                                                                                                                             |
+| available\_quantity           | `int`      | Indicates the quantity available (if applicable).                                                                                                                   |
+| reference                     | `string`   | A unique reference identifier associated with the webhook.                                                                                                          |
+| metadata                      | `json`     | Additional data or information related to the webhook.                                                                                                              |
+| enabled                       | `boolean`  | Indicates whether the webhook is enabled (true) or not (false).                                                                                                     |
+| created\_by                   | `string`   | Identifier of the user who created the webhook.                                                                                                                     |
+| created\_at                   | `DateTime` | A timestamp indicating the creation of the webhook.                                                                                                                 |
+| updated\_at                   | `DateTime` | A timestamp indicating the last update to the webhook.                                                                                                              |
+| source                        | `string`   | The source from which the webhook originates (e.g., "BoomFi").                                                                                                      |
+| event                         | `string`   | The specific event that triggers the webhook (e.g., "Plan.Created").                                                                                                |
+| customer\_id                  | `string`   | Identifier for the customer associated with the webhook (if applicable).                                                                                            |
+| trial\_period                 | `string`   | A period during which a trial occurs (if applicable).                                                                                                               |
+| recurring\_interval           | `string`   | The interval at which a recurring event occurs.                                                                                                                     |
+| recurring\_interval\_count    | `int`      | The number of intervals for recurring events.                                                                                                                       |
+| recurring\_usage\_type        | `string`   | The type of usage for recurring events (if applicable).                                                                                                             |
+| status                        | `string`   | Current status of a subscription or payment (e.g., "Pending", "Active", "Cancelled").                                                                               |
+| cancel\_at\_period\_end       | `boolean`  | Indicates if a subscription will be canceled at the end of the current billing period.                                                                              |
+| amount                        | `string`   | The monetary amount associated with the transaction.                                                                                                                |
+| payment\_method               | `string`   | The method used for payment (e.g., "Crypto").                                                                                                                       |
+| properties.test\_mode         | `boolean`  | If true payment was stimulated.                                                                                                                                     |
+| invoice\_id                   | `string`   | Identifier for an invoice related to the payment.                                                                                                                   |
+| next\_action                  | `string`   | Information about the next action to be taken.                                                                                                                      |
+| plan                          | `object`   | Object refering to the plan.                                                                                                                                        |
+| plan.id                       | `string`   | The plan's unique identifier.                                                                                                                                       |
+| plan.reference                | `string`   | The plan's identifier in an external system.                                                                                                                        |
+| crypto\_transaction           | `object`   | When crypto transactions are involved, `hash` and `chain_id` will be included as a reference. Merchants can use this to render transaction hash links, for example. |
+| crypto\_transaction.hash      | `string`   |                                                                                                                                                                     |
+| crypto\_transaction.chain\_id | `int`      |                                                                                                                                                                     |
