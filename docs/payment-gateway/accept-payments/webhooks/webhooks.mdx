@@ -1,11 +1,10 @@
 ---
 title: "Overview"
-description: "Suggest Edits"
 ---
 
 Webhooks enable apps to provide real-time information whenever an event happens without needing constant requests. They are the best way to ensure your system is up-to-date with payment progress and status. After configuring BoomFi's Webhooks, you will receive event notifications automatically every time an activity or a function is generated within our flow.
 
-![](/images/docs/06c2ee2-webhook.jpg)
+<Image src="/images/docs/06c2ee2-webhook.jpg"/>
 
 ## Webhook types
 
@@ -24,8 +23,7 @@ Plans are objects created when your team creates a new payment plan.
 
 This webhook for a `One-Time` plan `type` is triggered by the event `Plan.Created` and is designed to send you a notification when a one-time plan is created. An example of this webhook is presented as follows:
 
-<CodeGroup>
-  ```json json
+  ```json
   {
     "id": "2U4PAgjORxLTtqWCJjyGUjMKUTS",
     "org_id": "2U1BReVO7RxSPbhCdGtCBHEah6r",
@@ -46,14 +44,12 @@ This webhook for a `One-Time` plan `type` is triggered by the event `Plan.Create
     "event": "Plan.Created"
   }
   ```
-</CodeGroup>
 
 #### Recurring plan created
 
 This webhook for a `Recurring` plan `type` is also triggered by the event `Plan.Created` and will send you a notification when a recurring plan is created. An example of this webhook is presented below:
 
-<CodeGroup>
-  ```json json
+  ```json
   {
     "id": "2U4QqobIMPgsdiudz9up5C8t8he",
     "org_id": "2U1BReVO7RxSPbhCdGtCBHEah6r",
@@ -78,14 +74,14 @@ This webhook for a `Recurring` plan `type` is also triggered by the event `Plan.
     "event": "Plan.Created"
   }
   ```
-</CodeGroup>
+
 
 #### Plan update enabled
 
 You will receive notifications when the plan is updated. An example of this webhook is presented in the following code block:
 
-<CodeGroup>
-  ```json json
+
+  ```json
   {
     "id": "2U75Xjokx2lchimqSnpctVya8B3",
     "org_id": "2U1BReVO7RxSPbhCdGtCBHEah6r",
@@ -110,14 +106,14 @@ You will receive notifications when the plan is updated. An example of this webh
     "event": "Plan.Updated"
   }
   ```
-</CodeGroup>
+
 
 #### Plan update disabled
 
 A Plan or related payment link deactivated by the user. An example of this webhook is presented in the following code block:
 
-<CodeGroup>
-  ```json json
+
+  ```json
   {
     "id": "2U75Xjokx2lchimqSnpctVya8B3",
     "org_id": "2U1BReVO7RxSPbhCdGtCBHEah6r",
@@ -142,7 +138,7 @@ A Plan or related payment link deactivated by the user. An example of this webho
     "event": "Plan.Updated"
   }
   ```
-</CodeGroup>
+
 
 ### Subscription webhooks
 
@@ -157,8 +153,8 @@ Subscriptions are objects created when a customer subscribes to one of your recu
 
 This webhook sends you a notification when a subscription is created in your merchant account. An example of this webhook is presented as follows:
 
-<CodeGroup>
-  ```json json
+
+  ```json
   {
     "id": "2U4R7PnqLsyhoExzSb7tUskjztn",
     "customer_id": "2U4NjdOjTAa5aNyuyRzl8ZVoKXB",
@@ -189,14 +185,14 @@ This webhook sends you a notification when a subscription is created in your mer
     "event": "Subscription.Created"
   }
   ```
-</CodeGroup>
+
 
 #### Subscription updated - active
 
 This webhook updates you when a subscription is active so that you can share it with customers. An example of this webhook is presented in the following code block:
 
-<CodeGroup>
-  ```json json
+
+  ```json
   {
     "id": "2U4R7PnqLsyhoExzSb7tUskjztn",
     "customer_id": "2U4NjdOjTAa5aNyuyRzl8ZVoKXB",
@@ -227,14 +223,14 @@ This webhook updates you when a subscription is active so that you can share it 
     "event": "Subscription.Updated"
   }
   ```
-</CodeGroup>
+
 
 #### Subscription updated - succeeded
 
 This webhook sends you a notification when a customer subscription is active. An example of this webhook is presented as follows:
 
-<CodeGroup>
-  ```json json
+
+  ```json
   {
     "id": "2ULboTTT4w2chedUQyiRXpk2YM7",
     "customer_id": "2U8OOGnTgtKrMqHVHIRh436yLnR",
@@ -265,14 +261,14 @@ This webhook sends you a notification when a customer subscription is active. An
     "event": "Subscription.Updated"
   }
   ```
-</CodeGroup>
+
 
 #### Subscription updated - canceled
 
 With this webhook, you can get to know when a customer cancels a subscription, thus you can quickly take actions to reduce churn. An example of this webhook is presented in the following code block:
 
-<CodeGroup>
-  ```json json
+
+  ```json
   {
     "id": "2U4R7PnqLsyhoExzSb7tUskjztn",
     "customer_id": "2U4NjdOjTAa5aNyuyRzl8ZVoKXB",
@@ -303,7 +299,7 @@ With this webhook, you can get to know when a customer cancels a subscription, t
     "event": "Subscription.Canceled"
   }
   ```
-</CodeGroup>
+
 
 ### Payment webhooks
 
@@ -315,8 +311,8 @@ With this webhook, you can get to know when a customer cancels a subscription, t
 
 This webhook sends you a notification when a payment is created. An example of this webhook is presented as follows:
 
-<CodeGroup>
-  ```json json
+
+  ```json
   {
       "id": "2U7H5zYPtWl30MyCxtpbFwGSLGZ",
       "amount": "69.99",
@@ -351,14 +347,14 @@ This webhook sends you a notification when a payment is created. An example of t
       "event": "Payment.Created"
     }
   ```
-</CodeGroup>
+
 
 #### Payment update - in process
 
 This webhook sends you a notification when a payment for a subscription plan or one-time pay link is in process. An example of this webhook is presented below:
 
-<CodeGroup>
-  ```json json
+
+  ```json
   {
       "id": "2U7H5zYPtWl30MyCxtpbFwGSLGZ",
       "amount": "69.99",
@@ -393,14 +389,14 @@ This webhook sends you a notification when a payment for a subscription plan or 
       "event": "Payment.Updated"
     }
   ```
-</CodeGroup>
+
 
 #### Payment update - succeeded
 
 This webhook sends you a notification when a payment is successfully completed by the customer. An example of this webhook is presented as follows:
 
-<CodeGroup>
-  ```json json
+
+  ```json
   {
       "id": "2U7H5zYPtWl30MyCxtpbFwGSLGZ",
       "amount": "69.99",
@@ -435,7 +431,7 @@ This webhook sends you a notification when a payment is successfully completed b
       "event": "Payment.Updated"
     }
   ```
-</CodeGroup>
+
 
 ### Invoice webhooks
 
@@ -448,8 +444,8 @@ Invoices are objects created when a new invoice is generated.
 
 This event will notify you when a new invoice is created. Every newly created invoice will have an `unknown` payment status.
 
-<CodeGroup>
-  ```json json
+
+  ```json
   {
     "id": "inv_2lbpkhlbqWBbo4cd11brz8Ij75L",
     "customer_id": "2jdZlAbfpxZSY80bx81AqwuWuje",
@@ -549,14 +545,14 @@ This event will notify you when a new invoice is created. Every newly created in
     "event": "Invoice.Created"
   }
   ```
-</CodeGroup>
+
 
 #### Invoice overdue
 
 This webhook sends you a notification to alert you that the invoice is overdue.
 
-<CodeGroup>
-  ```json json
+
+  ```json
   {
     "id": "inv_2lbpkhlbqWBbo4cd11brz8Ij75L",
     "customer_id": "2jdZlAbfpxZSY80bx81AqwuWuje",
@@ -656,19 +652,3 @@ This webhook sends you a notification to alert you that the invoice is overdue.
     "event": "Invoice.Overdue"
   }
   ```
-</CodeGroup>
-
-***
-
-What’s Next
-
-* [Webhooks Parameters](/docs/webhooks-parameters)
-
-* [Table of Contents](#)
-
-* * [Webhook types](#webhook-types)
-
-    * [Plan webhooks](#plan-webhooks)
-    * [Subscription webhooks](#subscription-webhooks)
-    * [Payment webhooks](#payment-webhooks)
-    * [Invoice webhooks](#invoice-webhooks)

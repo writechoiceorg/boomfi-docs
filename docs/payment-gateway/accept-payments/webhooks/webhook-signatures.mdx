@@ -1,6 +1,5 @@
 ---
 title: "Webhook Signatures"
-description: "Suggest Edits"
 ---
 
 BoomFi implements signed webhooks using asymmetric cryptography and timestamps to ensure the security and authenticity of webhook requests. By verifying these signatures, you can confirm that webhook requests are genuinely from BoomFi and protect against replay attacks.
@@ -23,11 +22,11 @@ When BoomFi sends a webhook request, it includes a digital signature and a times
 
 You can view and manage your webhook signing public key in the BoomFi Merchant Dashboard. Click the rotate icon next to your public key to rotate your keypair.
 
-![](/images/docs/ee52cf16d9f30888088320e8dea9f94c77c7c546783bcb4a71fdc9ee2599c302-merchant-settings-webhook.png)
+<Image src="/images/docs/ee52cf16d9f30888088320e8dea9f94c77c7c546783bcb4a71fdc9ee2599c302-merchant-settings-webhook.png"/>
 
-<Warning>
+<Callout type="warning">
   Store your public key securely and rotate it periodically or if you suspect any compromise.
-</Warning>
+</Callout>
 
 ### Verification Steps
 
@@ -52,8 +51,7 @@ To verify the webhook signature, follow these steps:
 
 Below are Python, TypeScript, and Go code examples to help you implement the verification process.
 
-<CodeGroup>
-  ```python python
+  ```python 
   import base64
   import hashlib
   from cryptography.hazmat.primitives.asymmetric import rsa, padding
@@ -188,16 +186,3 @@ Below are Python, TypeScript, and Go code examples to help you implement the ver
   	return rsa.VerifyPKCS1v15(rsaPublicKey, crypto.SHA256, hashedMessage, signature)
   }
   ```
-</CodeGroup>
-
-***
-
-* [Table of Contents](#)
-
-* * [Verifying Webhook Signatures](#verifying-webhook-signatures)
-
-    * [How It Works](#how-it-works)
-    * [Managing Your Webhook Public Key](#managing-your-webhook-public-key)
-    * [Verification Steps](#verification-steps)
-
-  * [Code Examples](#code-examples)

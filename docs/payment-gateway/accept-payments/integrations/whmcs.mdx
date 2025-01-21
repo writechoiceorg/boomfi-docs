@@ -1,17 +1,16 @@
 ---
 title: "WHMCS"
-description: "Suggest Edits"
 ---
 
 This page provides comprehensive guides to seamlessly integrate BoomFi's powerful crypto payment capabilities with [WHMCS](https://www.whmcs.com/). Enable your customers to pay with cryptocurrency for both one-time purchases and recurring payments, all within your [WHMCS](https://www.whmcs.com/) platform.
 
 With BoomFi, you can now offer cryptocurrency as a payment option at checkout, alongside traditional payment methods, and unlock the full potential of crypto transactions.
 
-<Warning>
+<Callout type="warning">
   Currently, BoomFi's crypto payment option on WHMCS doesn't support **multiple-item checkout**. The following error message will be presented both to you, and in your customer's invoice:
 
-  ![](/images/docs/fedf157da3fa3939b31a097312435b582d2653467c850b756bece3d656564532-unpaid-invoice-error.png)
-</Warning>
+  <Image src="/images/docs/fedf157da3fa3939b31a097312435b582d2653467c850b756bece3d656564532-unpaid-invoice-error.png"/>
+</Callout>
 
 ## How to integrate
 
@@ -45,11 +44,11 @@ With BoomFi's Dashboard side configured, you now have to access your WHMCS accou
 1. Navigate to **Apps & Integrations**.
 2. Search for **BoomFi Crypto**.
 
-![](/images/docs/3fc46a954c5c5504b17d13df95953a5d8a40cc0d440cd569580db054914e02cb-search-plugin.png)
+<Image src="/images/docs/3fc46a954c5c5504b17d13df95953a5d8a40cc0d440cd569580db054914e02cb-search-plugin.png"/>
 
 3. Select our integration and activate it.
 
-![](/images/docs/338cea9ed83faadea9f8f4fa01d42ef51d650a0eeef2f259abca8e819587300a-plugin.png)
+<Image src="/images/docs/338cea9ed83faadea9f8f4fa01d42ef51d650a0eeef2f259abca8e819587300a-plugin.png"/>
 
 4. Fill in and select the required fields:
 
@@ -60,7 +59,7 @@ With BoomFi's Dashboard side configured, you now have to access your WHMCS accou
    * **Recurring Payment Link**: Enter the recurring payment link created in [Step 3](#step-3-create-payment-links).
    * **API Key**: Paste the API Key created in [Step 2](#step-2-generate-an-api-key).
 
-![](/images/docs/3e6d473610fd96d59aa1675195084bb57e7a6157c5231cbef9e93bdea96be792-plugin-config.png)
+<Image src="/images/docs/3e6d473610fd96d59aa1675195084bb57e7a6157c5231cbef9e93bdea96be792-plugin-config.png"/>
 
 ## Testing the Integration
 
@@ -71,18 +70,3 @@ To use test mode in WHMCS, you also need to use test environment paylinks from B
 To change to live mode, you need to go back to the BoomFi Crypto configuration screen, presented in [Step 4](#step-4-install-boomfis-plugin-on-whmcs), un-tick the Test Mode option, and change the paylinks for those generated on the [Production Environment Dashboard](http://app.boomfi.xyz/).
 
 Your WHMCS store is now ready to accept real cryptocurrency payments.
-
-***
-
-* [Table of Contents](#)
-
-* * [How to integrate](#how-to-integrate)
-
-    * [Step 1: Sign up to BoomFi](#step-1-sign-up-to-boomfi)
-    * [Step 2: Generate an API Key](#step-2-generate-an-api-key)
-    * [Step 3: Create Payment Links](#step-3-create-payment-links)
-    * [Step 4: Install BoomFi's Plugin on WHMCS](#step-4-install-boomfis-plugin-on-whmcs)
-
-  * [Testing the Integration](#testing-the-integration)
-
-  * [Switching to Live Environment](#switching-to-live-environment)

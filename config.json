@@ -82,6 +82,7 @@
                 },
                 "payment-gateway/accept-payments/pay-links",
                 "payment-gateway/accept-payments/customers",
+                "payment-gateway/accept-payments/withdraw-to-bank",
                 {
                   "groupName": "Integrations",
                   "subpages": [
@@ -98,12 +99,34 @@
                       "subpages": [
                         "payment-gateway/accept-payments/integrations/stripe/subscribing-a-customer-with-stripe"
                       ]
-                    }
+                    },
+                    "payment-gateway/accept-payments/integrations/woocommerce",
+                    "payment-gateway/accept-payments/integrations/whmcs"
                   ]
                 },
-                "payment-gateway/accept-payments/withdraw-to-bank"
+                {
+                  "groupName": "Webhooks",
+                  "page": "payment-gateway/accept-payments/webhooks/webhooks",
+                  "subpages": [
+                    "payment-gateway/accept-payments/webhooks/webhooks-parameters",
+                    "payment-gateway/accept-payments/webhooks/webhook-signatures"
+                  ]
+                }  
               ]
-            }
+            },
+            "payment-gateway/payouts",
+            "payment-gateway/transactions",
+            {
+              "groupName": "Set up your Merchant Dashboard",
+              "subpages": [
+                "payment-gateway/set-up-your-merchant-dashboard/profile",
+                "payment-gateway/set-up-your-merchant-dashboard/merchant",
+                "payment-gateway/set-up-your-merchant-dashboard/settlement",
+                "payment-gateway/set-up-your-merchant-dashboard/team",
+                "payment-gateway/set-up-your-merchant-dashboard/integration",
+                "payment-gateway/set-up-your-merchant-dashboard/api"
+              ]
+            }  
           ]
         },
         {
