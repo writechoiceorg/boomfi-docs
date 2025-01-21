@@ -82,6 +82,25 @@
                 },
                 "payment-gateway/accept-payments/pay-links",
                 "payment-gateway/accept-payments/customers",
+                {
+                  "groupName": "Integrations",
+                  "subpages": [
+                    {
+                      "groupName": "Chargebee",
+                      "page": "payment-gateway/accept-payments/integrations/chargebee/chargebee",
+                      "subpages": [
+                        "payment-gateway/accept-payments/integrations/chargebee/subscribing-a-customer-with-chargebee"
+                      ]
+                    },
+                    {
+                      "groupName": "Stripe",
+                      "page": "payment-gateway/accept-payments/integrations/stripe/stripe-billing",
+                      "subpages": [
+                        "payment-gateway/accept-payments/integrations/stripe/subscribing-a-customer-with-stripe"
+                      ]
+                    }
+                  ]
+                },
                 "payment-gateway/accept-payments/withdraw-to-bank"
               ]
             }
