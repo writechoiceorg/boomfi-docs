@@ -1,0 +1,198 @@
+---
+title: "Overview"
+description: "Suggest Edits"
+---
+
+BoomFi's card on-ramp product is a part of our suite of payment solutions tailored for merchants dealing with cryptocurrencies. It's a modern solution that collaborates with businesses and merchants, offering flexibility and customization. This page will guide you through the features, user journey, and how to get started with BoomFi's card on-ramp service.
+
+## BoomFi's Card Ramp Service
+
+While currently in a limited roll-out phase, we are rapidly expanding our features, geographic coverage, and local payment method support.
+
+Here's a summary of our current offerings and what's in the pipeline:
+
+|              | Q3 2024 (current)                                                                             | Q4 2024                                                                                       |
+| ------------ | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Geography\*  | 153 countries ✅                                                                               | Global ✅                                                                                      |
+| Currencies   | EURO, USD, GBP ✅                                                                              | Local payment methods such as PIX and more                                                    |
+| Capabilities | 4. SDK Integration 5. Customize branding (widgets and emails) 6. List new settlement tokens ✅ | 7. US coverage ✅ 8. Continued blockchain support expansion ✅ 9. Partner affiliate programme ✅ |
+
+\* Excluding BoomFI's list of [unsupported countries](/docs/how-boomfi-works/general-information/unsupported-countries).
+
+## Using BoomFi's on-ramp
+
+To purchase crypto with BoomFi's on-ramp solution, users will undergo the following steps:
+
+1. Access the swap link: [https://swap.boomfi.xyz/](https://swap.boomfi.xyz/)
+2. Select the desired amount of fiat or cryptocurrency they wish to purchase. The BoomFi on-ramp interface will provide a real-time indicative quote.
+3. Log in or create an account using email Multi-Factor Authentication (MFA).
+4. Complete a quick and straightforward Know Your Customer (KYC) process if the user is new to BoomFi.
+5. Confirm the purchase amount by submitting card details.
+
+After this, BoomFi will confirm the card payment, execute the order at the final price, and deliver the crypto to the user.
+
+<Callout type="info">
+  By accessing the link provided in the first step, you can try the solution yourself.
+</Callout>
+
+## Integrate BoomFi's Card Ramp
+
+Businesses interested in offering their users a seamless card-to-crypto buying experience can integrate our solution in their websites. An example of how you can do this is presented with the buttons below:
+
+Buy crypto with  Buy crypto with  Buy crypto with
+
+Sell crypto with  Sell crypto with  Sell crypto with
+
+And here is how to implement the buttons above in your code:
+
+<Tabs>
+  <TabItem value="Buy Crypto" label="Buy Crypto with BoomFi" default>
+  ```html
+  <body>
+    <div class="container">
+      <button onclick="window.open('https://swap.boomfi.xyz/', '_blank')">Buy crypto with <svg
+          xmlns="http://www.w3.org/2000/svg" width="67" height="12" viewBox="0 0 67 12" fill="none">
+          <path d="..." />
+        </svg></button>
+    </div>
+  </body>
+  ```
+  </TabItem>
+
+  <TabItem value="Sell Crypto" label="Sell Crypto with BoomFi">
+  ```html
+  <body>
+    <div class="container">
+      <button onclick="window.open('https://swap.boomfi.xyz/', '_blank')">Sell crypto with <svg
+          xmlns="http://www.w3.org/2000/svg" width="67" height="12" viewBox="0 0 67 12" fill="none">
+          <path d="..." />
+        </svg></button>
+    </div>
+  </body>
+  ```
+  </TabItem>
+
+  <TabItem value="CSS Purple" label="CSS Purple">
+  ```css
+  .container {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .container button {
+    align-items: center;
+    background: #5F00E7;
+    border: 1.5px solid #4C00B9;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    gap: 4px;
+    justify-content: center;
+    padding: 12px 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 300px;
+  }
+
+  .container button svg path {
+      fill: #FFF;
+    }
+
+  button:hover {
+    transform: scale(1.02);
+  }
+  ```
+  </TabItem>
+
+  <TabItem value="CSS Black" label="CSS Black">
+  ```css
+  .container {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .container button {
+    align-items: center;
+    background: #000;
+    border: 1.5px solid #000;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    gap: 4px;
+    justify-content: center;
+    padding: 12px 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 300px;
+  }
+
+  .container button svg path {
+      fill: #FFF;
+    }
+
+  button:hover {
+    transform: scale(1.02);
+  }
+  ```
+  </TabItem>
+
+  <TabItem value="CSS White" label="CSS White">
+  ```css
+  .container {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .container button {
+    align-items: center;
+    background: #FFF;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    gap: 4px;
+    justify-content: center;
+    padding: 12px 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 300px;
+  }
+
+  .container button svg path {
+      fill: #FFF;
+    }
+
+  button:hover {
+    transform: scale(1.02);
+  }
+  ```
+  </TabItem>
+</Tabs>
+
+<Callout type="info">
+  You can integrate BoomFi's Card Ramp by adding an `iframe` to your application. Refer to the [Iframe Integration](/docs/iframe-integration) page for more details.
+</Callout>
+
+## Configuring the Card Ramp URL
+
+You can modify the [https://swap.boomfi.xyz/](https://swap.boomfi.xyz/) URL to fit your application needs. This is done through query parameters added in the URL you will provide your customer. Find all available parameters you can add in the [Configure your Card Ramp URL](/docs/configure-your-card-ramp-url) page.
+
+<Callout type="warning">
+  If you have any questions, please do not hesitate to reach out to [BoomFi's Support](mailto:support@boomfi.xyz).
+</Callout>
+
+## Supported Countries for Card Ramp
+
+Refer to the [Supported Countries](/docs/card-on-ramp/supported-countries-for-card-ramp) page for a complete list of supported countries.

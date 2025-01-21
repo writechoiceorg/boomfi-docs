@@ -1,6 +1,5 @@
 ---
 title: "Configure your Card Ramp URL"
-description: "Suggest Edits"
 ---
 
 The following query parameters can be added to the [https://swap.boomfi.xyz/](https://swap.boomfi.xyz/) URL to customize BoomFi's Card Ramp solution:
@@ -20,9 +19,9 @@ The following query parameters can be added to the [https://swap.boomfi.xyz/](ht
 | `ext_partner_id`    | Your organization ID, found on the Merchant Dashboard under **Settings > Merchant**. If valid and a webhook URL is set, a payment webhook payload will be sent.                                                                                                                                                                                                                                | Valid Org ID.                                                                                                    |
 | `ext_ref`           | An external reference string you choose, such as a session identifier. If set alongside a valid `ext_partner_id`, it will be included in the payment webhook payload.                                                                                                                                                                                                                          | Any string.                                                                                                      |
 
-<Info>
+<Callout type="info">
   If both `buy_amount` and `sell_amount` are provided and valid, `buy_amount` will take priority.
-</Info>
+</Callout>
 
 ## Use cases
 
@@ -40,12 +39,12 @@ To lock a field, you need to add the `locked_field` parameter. The example below
 https://swap.boomfi.xyz/?locked_fields=sell_amount&locked_fields=buy_token&sell_ccy=GBP&sell_amount=10&chain_id=1&buy_ccy=USDC&buy_token=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48&recipient_wallet=0x844Acef789989Cb6E21E0F07DD4e894709f92F96&redirect_to=https://www.youtube.com/watch?v=dQw4w9WgXcQ
 ```
 
-<Warning>
+<Callout type="warning">
   It's important to note the following constraints:
 
   * In order to lock the `sell_amount`, you must also lock the `sell_ccy`.
   * In order to lock the `buy_amount`, you need to lock the `buy_ccy`.
-</Warning>
+</Callout>
 
 Also, you can lock multiple fields in the URL. To do this, add multiple `locked_fields` query parameters to the URL, one for each field you need to be locked. Below, you will find an example of locking `sell_amount` and `sell_ccy`, making the option locked with a sell currency of GBP and a sell amount of 10:
 
@@ -94,12 +93,3 @@ And, the following fields are locked:
 * `locked_fields=buy_token`
 * `locked_fields=sell_ccy`
 * `locked_fields=sell_amount`
-
-***
-
-* [Table of Contents](#)
-
-* * [Use cases](#use-cases)
-
-    * [Locked Fields](#locked-fields)
-    * [Skipping Quote Screen](#skipping-quote-screen)
