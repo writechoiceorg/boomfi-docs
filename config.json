@@ -76,7 +76,7 @@
               "subpages": [
                 {
                   "groupName": "Setup Settlement Details",
-                  "page": "payment-gateway/accept-payments/setup-settlement-details/intro-setup-settlement",
+                  "page": "payment-gateway/accept-payments/setup-settlement-details/intro-setup-settlement-details",
                   "subpages": [
                     "payment-gateway/accept-payments/setup-settlement-details/configuring-settlement-accounts"
                   ]
@@ -112,7 +112,7 @@
                     "payment-gateway/accept-payments/webhooks/webhooks-parameters",
                     "payment-gateway/accept-payments/webhooks/webhook-signatures"
                   ]
-                }  
+                }
               ]
             },
             "payment-gateway/payouts",
@@ -127,7 +127,7 @@
                 "payment-gateway/set-up-your-merchant-dashboard/integration",
                 "payment-gateway/set-up-your-merchant-dashboard/api"
               ]
-            }  
+            }
           ]
         },
         {
@@ -209,7 +209,7 @@
             {
               "groupName": "Integrations",
               "page": "reference/merchant/get-integrations",
-              "subpages": [     
+              "subpages": [
                 "reference/merchant/get-integration-templates",
                 "reference/merchant/create-webhook",
                 "reference/merchant/disable-integration",
