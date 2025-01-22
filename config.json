@@ -162,30 +162,30 @@
           "pages": [
             {
               "groupName": "Organization",
-              "page": "reference/merchant/get-organization",
               "subpages": [
+                "reference/merchant/get-organization",
                 "reference/merchant/update-organization"
               ]
             },
             {
               "groupName": "Paylinks",
-              "page": "reference/merchant/list-paylinks",
               "subpages": [
+                "reference/merchant/list-paylinks",
                 "reference/merchant/create-payment-link",
                 "reference/merchant/create-variant-paylink-url"
               ]
             },
             {
               "groupName": "Payments",
-              "page": "reference/merchant/list-payments",
               "subpages": [
+                "reference/merchant/list-payments",
                 "reference/merchant/get-payment-by-id"
               ]
             },
             {
               "groupName": "Plans",
-              "page": "reference/merchant/list-plans",
               "subpages": [
+                "reference/merchant/list-plans",
                 "reference/merchant/get-plan-by-id",
                 "reference/merchant/create-plan"
               ]
@@ -199,8 +199,8 @@
             },
             {
               "groupName": "Customers",
-              "page": "reference/merchant/list-customers",
               "subpages": [
+                "reference/merchant/list-customers",
                 "reference/merchant/create-customer",
                 "reference/merchant/delete-customer",
                 "reference/merchant/get-customer-by-id"
@@ -208,8 +208,8 @@
             },
             {
               "groupName": "Integrations",
-              "page": "reference/merchant/get-integrations",
               "subpages": [
+                "reference/merchant/get-integrations",
                 "reference/merchant/get-integration-templates",
                 "reference/merchant/create-webhook",
                 "reference/merchant/disable-integration",
