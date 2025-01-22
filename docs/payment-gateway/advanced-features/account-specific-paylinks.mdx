@@ -1,6 +1,5 @@
 ---
 title: "Overview"
-description: "Suggest Edits"
 ---
 
 Account-Specific Paylinks is a feature designed for merchants who manage multiple accounts across different currencies, payment chains, or geographic regions. This feature allows merchants to link specific accounts to their paylinks, giving them greater control and flexibility over payment settlements. It is ideal for platforms handling large volumes of accounts, allowing customization of how each payment is directed to specific accounts.
@@ -20,16 +19,16 @@ To create an account-specific paylink, merchants have two primary options for as
 * [Attach Accounts Using `account_ids`](#account_ids)
 * [Attach Accounts Using `account_ref`](#account_ref)
 
-<Info>
+<Callout type="info">
   Refer to the [Configuring Accounts with BoomFi's API](/docs/configuring-settlement-accounts) guide to learn how to create and manage your accounts.
-</Info>
+</Callout>
 
 ### `account_ids`
 
 The `account_ids` parameter lets you specify an array of account IDs directly in the paylink request. This is useful if you have exact accounts in mind that should receive the payment. Using the [Create Paylink](/reference/create-payment-link) endpoint, add the account IDs array to the request, as exemplified below:
 
-<CodeGroup>
-  ```curl curl
+
+  ```bash
   curl --request POST \
        --url https://mapi.boomfi.xyz/v1/paylinks \
        --header 'accept: application/json' \
@@ -47,14 +46,12 @@ The `account_ids` parameter lets you specify an array of account IDs directly in
   }
   '
   ```
-</CodeGroup>
 
 ### `account_ref`
 
 The `account_ref` parameter allows you to associate a general account reference with the paylink. This option helps group multiple accounts under a shared reference, making it more straightforward to attach a category of accounts rather than specific IDs. Using the [Create Paylink](/reference/create-payment-link) endpoint, add the account reference to the request, as exemplified below:
 
-<CodeGroup>
-  ```curl curl
+  ```bash 
   curl --request POST \
        --url https://mapi.boomfi.xyz/v1/paylinks \
        --header 'accept: application/json' \
@@ -68,22 +65,8 @@ The `account_ref` parameter allows you to associate a general account reference 
   }
   '
   ```
-</CodeGroup>
 
 ## Things to Keep in Mind
 
 * **Self-Management Is Key**: Choosing this granular approach means you are responsible for managing all aspects of your accounts and Paylinks.
 * **Flexibility vs. Complexity**: While this feature offers great flexibility, it also requires diligent management to ensure everything operates smoothly.
-
-***
-
-* [Table of Contents](#)
-
-* * [Who Is This Feature For?](#who-is-this-feature-for)
-
-  * [How to Use Account-Specific Paylinks](#how-to-use-account-specific-paylinks)
-
-    * [`account_ids`](#account_ids)
-    * [`account_ref`](#account_ref)
-
-  * [Things to Keep in Mind](#things-to-keep-in-mind)
