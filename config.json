@@ -25,7 +25,8 @@
     "pagination": false
   },
   "apiFiles": [
-    "merchant.json"
+    "merchant.json",
+    "accounts.json"
   ],
   "homepage": "homepage.html",
   "changelog": false,
@@ -55,8 +56,8 @@
             "how-boomfi-works/introduction",
             {
               "groupName": "General Information",
+              "page": "how-boomfi-works/general-information/account-verification-limits",
               "subpages": [
-                "how-boomfi-works/general-information/account-verification-limits",
                 "how-boomfi-works/general-information/networks-and-currencies",
                 "how-boomfi-works/general-information/pricing-and-fees",
                 "how-boomfi-works/general-information/unsupported-business-activities",
@@ -75,7 +76,7 @@
               "subpages": [
                 {
                   "groupName": "Setup Settlement Details",
-                  "page": "payment-gateway/accept-payments/setup-settlement-details/setup-settlement-details",
+                  "page": "payment-gateway/accept-payments/setup-settlement-details/intro-setup-settlement",
                   "subpages": [
                     "payment-gateway/accept-payments/setup-settlement-details/configuring-settlement-accounts"
                   ]
@@ -144,31 +145,83 @@
       "sidebarRef": "apiReference",
       "categories": [
         {
+          "categoryName": "Introduction",
+          "pages": [
+            {
+              "groupName": "Overview",
+              "page": "reference/api-overview",
+              "subpages": [
+                "reference/authentication-page",
+                "reference/response-patterns"
+              ]
+            }
+          ]
+        },
+        {
           "categoryName": "Merchant",
           "pages": [
-            "reference/merchant/cancel-subscription",
-            "reference/merchant/create-customer",
-            "reference/merchant/create-payment-link",
-            "reference/merchant/create-plan",
-            "reference/merchant/create-variant-paylink-url",
-            "reference/merchant/create-webhook",
-            "reference/merchant/delete-customer",
-            "reference/merchant/disable-integration",
-            "reference/merchant/enable-integration",
-            "reference/merchant/get-customer-by-id",
-            "reference/merchant/get-integration-templates",
-            "reference/merchant/get-integrations",
-            "reference/merchant/get-organization",
-            "reference/merchant/get-payment-by-id",
-            "reference/merchant/get-plan-by-id",
-            "reference/merchant/list-accounts",
-            "reference/merchant/list-customers",
-            "reference/merchant/list-events-for-organization",
-            "reference/merchant/list-paylinks",
-            "reference/merchant/list-payments",
-            "reference/merchant/list-plans",
-            "reference/merchant/list-subscriptions",
-            "reference/merchant/update-organization"
+            {
+              "groupName": "Organization",
+              "page": "reference/merchant/get-organization",
+              "subpages": [
+                "reference/merchant/update-organization"
+              ]
+            },
+            {
+              "groupName": "Paylinks",
+              "page": "reference/merchant/list-paylinks",
+              "subpages": [
+                "reference/merchant/create-payment-link",
+                "reference/merchant/create-variant-paylink-url"
+              ]
+            },
+            {
+              "groupName": "Payments",
+              "page": "reference/merchant/list-payments",
+              "subpages": [
+                "reference/merchant/get-payment-by-id"
+              ]
+            },
+            {
+              "groupName": "Plans",
+              "page": "reference/merchant/list-plans",
+              "subpages": [
+                "reference/merchant/get-plan-by-id",
+                "reference/merchant/create-plan"
+              ]
+            },
+            {
+              "groupName": "Subscriptions",
+              "subpages": [
+                "reference/merchant/cancel-subscription",
+                "reference/merchant/list-subscriptions"
+              ]
+            },
+            {
+              "groupName": "Customers",
+              "page": "reference/merchant/list-customers",
+              "subpages": [
+                "reference/merchant/create-customer",
+                "reference/merchant/delete-customer",
+                "reference/merchant/get-customer-by-id"
+              ]
+            },
+            {
+              "groupName": "Integrations",
+              "page": "reference/merchant/get-integrations",
+              "subpages": [     
+                "reference/merchant/get-integration-templates",
+                "reference/merchant/create-webhook",
+                "reference/merchant/disable-integration",
+                "reference/merchant/enable-integration"
+              ]
+            },
+            {
+              "groupName": "Events",
+              "subpages": [
+                "reference/merchant/list-events-for-organization"
+              ]
+            }
           ]
         }
       ]

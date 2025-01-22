@@ -1,0 +1,100 @@
+---
+title: Overview
+---
+
+BoomFi's API has been implemented around RESTful. Our API uses standard HTTP protocols where JSON payloads are returned in response to HTTP requests. All operations can be performed via GET, POST, PUT, PATCH, and DELETE requests.
+
+## Initial Setup
+
+Before you can effectively interact with the BoomFi API, ensure the following steps are completed:
+
+1.  **Join the Merchant Dashboard:** Sign up and maintain an active account on the [BoomFi dashboard](https://test.boomfi.xyz/dashboard). This is your central hub for managing your organization's interactions with the BoomFi platform.
+    
+2.  **Set Up Your Settlement Account:** Configure your settlement account to handle payments. This step is crucial for enabling your organization to receive payouts seamlessly.
+    
+3.  **Generate API Keys:** Obtain your API keys from the dashboard. These keys are required to authenticate all API requests and ensure secure communication between your application and BoomFi's services.
+    
+
+
+<Callout type="success" title="Quickstart">
+Follow the **Initial Setup** steps to get up and running with the BoomFi API and ensure your account and settlement configurations are ready.
+</Callout>
+
+## Authentication and API Response Patterns
+Explore the following pages for guidance on how to effectively interact with BoomFi's API **Authentication** and **API Response Patterns**:
+
+<CardList cols={2}>
+<Card 
+  title="Authentication"
+  description="Learn how to authenticate your API requests using API keys securely. This page explains the API key security schema and provides examples of including your API key in requests."
+  link="/reference/introduction/authentication"
+  icon="key"
+/>
+<Card 
+  title="API Response Pattern"
+  description="Learn the API response patterns BoomFi uses, including single-item responses, paginated data, and error handling. This page also covers the range of HTTP response codes and how to interpret them in your applications."
+  link="/reference/introduction/response-pattern"
+  icon="code"
+/>
+</CardList>
+
+
+## Endpoints Overview
+BoomFi’s API is organized into several key areas, each designed to manage specific aspects of your interaction with the platform. Below is an overview of the available endpoint areas:
+
+<CardList cols={3}>
+<Card 
+  title="Authentication"
+  description="Learn how to authenticate your API requests using API keys securely. This page explains the API key security schema and provides examples of including your API key in requests."
+  link="/reference/merchant/get-organization"
+  icon="building"
+/>
+<Card 
+  title="Accounts"
+  description="Learn the API response patterns BoomFi uses, including single-item responses, paginated data, and error handling. This page also covers the range of HTTP response codes and how to interpret them in your applications."
+  link="/reference/merchant/list-accounts"
+  icon="wallet"
+/>
+<Card 
+  title="Paylinks"
+  description="Learn the API response patterns BoomFi uses, including single-item responses, paginated data, and error handling. This page also covers the range of HTTP response codes and how to interpret them in your applications."
+  link="/reference/merchant/create-payment-link"
+  icon="link"
+/>
+<Card 
+  title="Payments"
+  description="Learn the API response patterns BoomFi uses, including single-item responses, paginated data, and error handling. This page also covers the range of HTTP response codes and how to interpret them in your applications."
+  link="/reference/merchant/list-payments"
+  icon="money"
+/>
+<Card 
+  title="Plans"
+  description="Learn the API response patterns BoomFi uses, including single-item responses, paginated data, and error handling. This page also covers the range of HTTP response codes and how to interpret them in your applications."
+  link="/reference/merchant/list-plans"
+  icon="notebook"
+/>
+<Card 
+  title="Subscriptions"
+  description="Learn the API response patterns BoomFi uses, including single-item responses, paginated data, and error handling. This page also covers the range of HTTP response codes and how to interpret them in your applications."
+  link="/reference/merchant/list-subscriptions"
+  icon="cardholder"
+/>
+<Card 
+  title="Customers"
+  description="Learn the API response patterns BoomFi uses, including single-item responses, paginated data, and error handling. This page also covers the range of HTTP response codes and how to interpret them in your applications."
+  link="/reference/merchant/list-customers"
+  icon="users"
+/>
+<Card 
+  title="Integrations"
+  description="Learn the API response patterns BoomFi uses, including single-item responses, paginated data, and error handling. This page also covers the range of HTTP response codes and how to interpret them in your applications."
+  link="/reference/merchant/get-integrations"
+  icon="plugs"
+/>
+<Card 
+  title="Events"
+  description="Learn the API response patterns BoomFi uses, including single-item responses, paginated data, and error handling. This page also covers the range of HTTP response codes and how to interpret them in your applications."
+  link="/reference/merchant/list-events-for-organization"
+  icon="bell-simple"
+/>
+</CardList>
